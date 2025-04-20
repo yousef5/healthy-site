@@ -6,7 +6,8 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: process.env.NODE_ENV === "production" ? "/healthy-web" : "",
+  basePath: process.env.NODE_ENV === "production" ? "/healthy-site" : "",
+  trailingSlash: true,
 };
 
 const withNextIntl = createNextIntlPlugin();
