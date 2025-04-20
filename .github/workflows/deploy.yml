@@ -36,6 +36,12 @@ jobs:
           NODE_ENV: production
           GITHUB_ACTIONS: true
 
+      - name: Copy 404.html to out directory
+        run: |
+          mkdir -p out
+          cp public/404.html out/
+          cp public/index.html out/
+
       - name: List output directory
         run: ls -la ./out
 

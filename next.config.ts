@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
   },
   basePath: process.env.NODE_ENV === "production" ? "/healthy-site" : "",
   trailingSlash: true,
+  assetPrefix: process.env.NODE_ENV === "production" ? "/healthy-site/" : "",
 };
 
 const withNextIntl = createNextIntlPlugin();
