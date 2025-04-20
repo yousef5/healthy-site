@@ -1,8 +1,7 @@
 {
   "Index": {
-    "boilerplateName": "Next.js i18n Template",
-    "title": "Next 15 Template with i18n and Shadcn UI",
-    "description": "A powerful starting point for your next multilingual, accessible web application.",
+    "title": "Healthy Pharmaceutical & Medical Industries",
+    "description": "Healthy Pharmaceutical & Medical Industries",
     "cloneRepository": "Clone Repository",
     "leaveStar": "Leave a Star",
     "howToUse": "How to Use",
@@ -75,9 +74,9 @@
     "followUs": "Follow Us"
   },
   "Metadata": {
-    "title": "Next.js i18n Template - Multilingual Starter Template",
-    "description": "Next.js internationalization (i18n) starter kit with Arabic, Chinese, English, Spanish, and Japanese support. Includes shadcn UI, theme switching, and RTL support.",
-    "keywords": "Next.js, i18n, internationalization, Arabic, Chinese, Spanish, Japanese, multilingual, template, starter template, shadcn UI, RTL support"
+    "title": "Healthy Pharmaceutical & Medical Industries",
+    "description": "Healthy Pharmaceutical & Medical Industries",
+    "keywords": "Healthy Pharmaceutical & Medical Industries"
   },
   "HealthyCure": {
     "heroTitle": "Healthy Cure",
