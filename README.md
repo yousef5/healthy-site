@@ -58,6 +58,14 @@ npm run build
 npm start
 ```
 
+### GitHub Pages Deployment
+
+To deploy on GitHub Pages:
+
+1. Make sure your repository is public (GitHub Pages for private repositories requires GitHub Enterprise)
+2. Push changes to the main branch
+3. The GitHub Actions workflow will automatically build and deploy to the gh-pages branch
+
 ## 📱 Browser Support
 
 - Chrome (latest)
