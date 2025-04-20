@@ -2,6 +2,7 @@ import { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
 const nextConfig: NextConfig = {
+  output: process.env.GITHUB_ACTIONS === "true" ? "export" : undefined,
   images: {
     unoptimized: true,
   },
