@@ -1,4 +1,13 @@
-User-agent: *
-Allow: /
+import { MetadataRoute } from 'next';
 
-Sitemap: https://next-app-i18n-starter.vercel.app/sitemap.xml
+export const dynamic = "force-static";
+
+export default function robots(): MetadataRoute.Robots {
+  return {
+    rules: {
+      userAgent: '*',
+      allow: '/',
+    },
+    sitemap: 'https://next-app-i18n-starter.vercel.app/sitemap.xml',
+  };
+}
