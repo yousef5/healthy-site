@@ -4,11 +4,10 @@ import createNextIntlPlugin from "next-intl/plugin";
 const nextConfig: NextConfig = {
   output: process.env.GITHUB_ACTIONS === "true" ? "export" : undefined,
   images: {
-    unoptimized: true,
+    unoptimized: process.env.GITHUB_ACTIONS === "true",
   },
-  basePath: process.env.NODE_ENV === "production" ? "/healthy-site" : "",
-  trailingSlash: true,
-  assetPrefix: process.env.NODE_ENV === "production" ? "/healthy-site/" : "",
+  basePath: process.env.GITHUB_ACTIONS === "true" ? "/healthy-site" : "",
+  trailingSlash: process.env.GITHUB_ACTIONS === "true",
 };
 
 const withNextIntl = createNextIntlPlugin();
