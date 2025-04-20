@@ -6,7 +6,10 @@ export default function CatchAllPage() {
 
 // When using "output: export", all dynamic routes must define generateStaticParams
 export function generateStaticParams() {
-  // Generate an empty array since we don't actually want to pre-render any paths
-  // This route is just a catch-all to show 404 for non-existent routes
-  return [];
+  // For static export, we need to specify at least one path
+  // Include a dummy path for each locale
+  return [
+    { locale: "en", rest: ["not-found"] },
+    { locale: "ar", rest: ["not-found"] },
+  ];
 }
