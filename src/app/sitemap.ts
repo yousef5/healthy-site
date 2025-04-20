@@ -4,7 +4,7 @@ export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://next-app-i18n-starter.vercel.app";
-  const locales = ["en", "ar", "zh", "es", "jp"] as const;
+  const locales = ["en", "ar"] as const;
 
   return [
     {
