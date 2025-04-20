@@ -33,8 +33,13 @@
   },
 
   "Footer": {
-    "copyright": "© 2025 Next.js 多语言模板。基于MIT协议开源。",
-    "githubLink": "GitHub仓库"
+    "copyright": "© 2025 健康药品和医疗工业。版权所有。",
+    "githubLink": "GitHub仓库",
+    "developedBy": "由Mohammed Yousef开发",
+    "privacyPolicy": "隐私政策",
+    "termsOfService": "服务条款",
+    "contactUs": "联系我们",
+    "followUs": "关注我们"
   },
   "Metadata": {
     "title": "Next.js 国际化模板 - 多语言启动套件",

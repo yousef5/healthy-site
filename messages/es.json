@@ -32,8 +32,13 @@
     }
   },
   "Footer": {
-    "copyright": "© 2025 Plantilla i18n de Next.js. Código abierto bajo licencia MIT.",
-    "githubLink": "GitHub"
+    "copyright": "© 2025 Healthy Pharmaceutical & Medical Industries. Todos los derechos reservados.",
+    "githubLink": "GitHub",
+    "developedBy": "Desarrollado por Mohammed Yousef",
+    "privacyPolicy": "Política de Privacidad",
+    "termsOfService": "Términos de Servicio",
+    "contactUs": "Contacto",
+    "followUs": "Síguenos"
   },
   "Metadata": {
     "title": "Plantilla i18n de Next.js - Plantilla de inicio multilingüe",

@@ -6,20 +6,17 @@ import { Metadata } from "next";
 import { ThemeProvider } from "@/components/theme-provider";
 import { jsonLdScriptProps } from "react-schemaorg";
 import { WebSite } from "schema-dts";
-import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "../globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import {
+  cairo,
+  tajawal,
+  tajawalLight,
+  tajawalRegular,
+  tajawalBold,
+  inter,
+} from "@/lib/fonts";
 
 export default async function RootLayout({
   children,
@@ -46,6 +43,18 @@ export default async function RootLayout({
           rel="canonical"
           href={`https://next-app-i18n-starter.vercel.app`}
         />
+        <style>
+          {`
+            :root {
+              --color-primary-rgb: 52, 52, 52;
+              --color-secondary-rgb: 152, 152, 152;
+            }
+            .dark {
+              --color-primary-rgb: 235, 235, 235;
+              --color-secondary-rgb: 69, 69, 69;
+            }
+          `}
+        </style>
         <link
           rel="alternate"
           hrefLang="x-default"
@@ -80,7 +89,14 @@ export default async function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`
+          ${
+            isArabic
+              ? `${cairo.variable} ${tajawal.variable} ${tajawalLight.variable} ${tajawalRegular.variable} ${tajawalBold.variable}`
+              : inter.variable
+          }
+          antialiased
+        `}
         suppressHydrationWarning
       >
         <ThemeProvider

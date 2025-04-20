@@ -32,8 +32,13 @@
     }
   },
   "Footer": {
-    "copyright": "© 2025 Next.js i18n テンプレート。MITライセンスの下でオープンソース。",
-    "githubLink": "GitHub"
+    "copyright": "© 2025 ヘルシー製薬・医療産業。無断複写・転載を禁じます。",
+    "githubLink": "GitHub",
+    "developedBy": "Mohammed Yousefが開発",
+    "privacyPolicy": "プライバシーポリシー",
+    "termsOfService": "利用規約",
+    "contactUs": "お問い合わせ",
+    "followUs": "フォローする"
   },
   "Metadata": {
     "title": "Next.js i18n テンプレート - 多言語スターターテンプレート",

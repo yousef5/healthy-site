@@ -1,0 +1,32 @@
+{
+  "Index.ourTrustedPartners": "Our Trusted Partners",
+  "Index.partnersDescription": "We work with major health and pharmaceutical organizations to provide excellent medical solutions and high-quality healthcare for patients.",
+  "Navbar.healthyCure": "HealthyCure",
+  "HealthyCure.title": "Our Scientific Office - HealthyCure",
+  "HealthyCure.subtitle": "Committed to providing safe and effective pharmaceutical products that keep pace with scientific advancements.",
+  "HealthyCure.products": "Our Products",
+  "HealthyCure.contact": "Contact us for more information or to request samples.",
+  "HealthyCure.contactButton": "Contact Us",
+  "HealthyCure.productsList": {
+    "omepure": {
+      "name": "Omepure",
+      "description": "Antacid and peptic ulcer treatment"
+    },
+    "alfafresh": {
+      "name": "Alfafresh",
+      "description": "Natural oral and dental care product"
+    },
+    "alfamore": {
+      "name": "Alfamore",
+      "description": "Dietary supplement for overall health improvement"
+    },
+    "shklocal": {
+      "name": "Shklocal",
+      "description": "Topical treatment for muscle pain relief"
+    },
+    "vadrenk": {
+      "name": "Vadrenk",
+      "description": "Immunity booster and antioxidant syrup"
+    }
+  }
+}

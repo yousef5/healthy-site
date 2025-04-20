@@ -1,0 +1,38 @@
+{
+  "Index.ourTrustedPartners": "شركاؤنا الموثوق بهم",
+  "Index.partnersDescription": "نعمل مع كبرى المؤسسات الصحية والصيدلانية لتقديم حلول طبية متميزة ورعاية صحية عالية الجودة للمرضى.",
+  "Navbar.healthyCure": "هيلثي كيور",
+  "HealthyCure.title": "مكتبنا العلمي - هيلثي كيور",
+  "HealthyCure.subtitle": "ملتزمون بتقديم منتجات دوائية آمنة وفعالة تواكب التطور العلمي في المجال الطبي.",
+  "HealthyCure.products": "منتجاتنا",
+  "HealthyCure.contact": "تواصل معنا لمعرفة المزيد أو لطلب العينات.",
+  "HealthyCure.contactButton": "اتصل بنا",
+  "HealthyCure.premium": "منتج متميز",
+  "HealthyCure.heroSubtitle": "صحتك هي أولويتنا",
+  "HealthyCure.heroTitle": "منتجات هيلثي كيور للحياة الصحية",
+  "HealthyCure.heroDescription": "اكتشف مجموعتنا الرائدة من المنتجات الصحية المصممة لتعزيز صحتك ورفاهيتك بشكل طبيعي. منتجات عالية الجودة مدعومة بالعلم والخبرة.",
+  "HealthyCure.browseProductsButton": "تصفح المنتجات",
+  "HealthyCure.healthInfoButton": "معلومات صحية",
+  "HealthyCure.productsList": {
+    "omepure": {
+      "name": "أوميبيور",
+      "description": "مضاد للحموضة وعلاج قرحة المعدة"
+    },
+    "alfafresh": {
+      "name": "ألفافريش",
+      "description": "منتج طبيعي للعناية بالفم والأسنان"
+    },
+    "alfamore": {
+      "name": "ألفامور",
+      "description": "مكمل غذائي لتحسين الصحة العامة"
+    },
+    "shklocal": {
+      "name": "شكلوكال",
+      "description": "علاج موضعي لتخفيف الآلام العضلية"
+    },
+    "vadrenk": {
+      "name": "فادرينك",
+      "description": "شراب مقوي للمناعة ومضاد للأكسدة"
+    }
+  }
+}
