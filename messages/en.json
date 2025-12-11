@@ -31,7 +31,7 @@
     },
     "heroTitle": "Healthy Pharmaceutical & Medical Industries",
     "heroSubtitle": "Excellence in Manufacturing. Leadership in Distribution. Integration in Care.",
-    "heroDescription": "We are a fully integrated pharmaceutical entity, covering all of Egypt through a robust distribution network of over 2,500 pharmacies, 1,000 employees, and 200 vehicles. Through our pharmacy chain \"Moneer Pharmacies\" based in Mansoura, we deliver a trusted, seamless pharmaceutical experience directly to our customers. We proudly own \"Healthy Cure\", our scientific office dedicated to developing high-quality medications such as Omepure and Germytin.",
+    "heroDescription": "We are a fully integrated pharmaceutical entity, covering all of Egypt through a robust distribution network of over 6,000 pharmacies, 450 employees, and 59 vehicles.",
     "heroTagline": "Your health is our responsibility.",
     "getStartedButton": "Explore Our Products",
     "learnMoreButton": "Contact Us",
@@ -45,8 +45,8 @@
     "featureDesc2": "Professional healthcare advice from certified pharmacists",
     "featureTitle3": "Fast Delivery",
     "featureDesc3": "Get your medications delivered quickly to your doorstep",
-    "ourTrustedPartners": "Our Trusted Partners",
-    "partnersDescription": "We collaborate with leading healthcare and pharmaceutical organizations to deliver excellence in medical solutions and patient care."
+    "ourCustomers": "Our Valued Customers",
+    "customersDescription": "Trusted pharmacies across Egypt that rely on us to deliver high-quality pharmaceutical products and exceptional service."
   },
 
   "Navbar": {
@@ -61,7 +61,12 @@
     "consultation": "Medical Consultation",
     "prescriptions": "Prescriptions",
     "delivery": "Home Delivery",
-    "healthyCure": "Healthy Cure"
+    "healthyCure": "Healthy Cure",
+    "aboutUs": "About Us",
+    "contactUs": "Contact Us",
+    "ourVision": "Our Vision",
+    "ourMission": "Our Mission",
+    "certificate": "Certificate"
   },
 
   "Footer": {
@@ -111,5 +116,41 @@
         "description": "Comprehensive Medications for Patients and Customers"
       }
     }
+  },
+  "AboutUs": {
+    "title": "About Us",
+    "subtitle": "Your Health is Our Responsibility",
+    "description": "We are a fully integrated pharmaceutical entity, covering all of Egypt through a robust distribution network of over 6,000 pharmacies, 450 employees, and 59 vehicles.",
+    "mission": "Our Mission",
+    "vision": "Our Vision"
+  },
+  "ContactUs": {
+    "title": "Contact Us",
+    "subtitle": "Get in Touch",
+    "description": "We would love to hear from you. Please feel free to reach out to us.",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address",
+    "emailValue": "info@healthy.eg",
+    "phoneValue": "+20 050 2338989",
+    "addressValue": "14 Sherif El-Rady St., Old Tawriel, Mansoura, Egypt"
+  },
+  "OurVision": {
+    "title": "Our Vision",
+    "subtitle": "Excellence in Healthcare",
+    "description": "To be the leading pharmaceutical company in Egypt and the Middle East, providing innovative healthcare solutions that improve the quality of life for our customers.",
+    "content": "We strive to create a healthier future by delivering high-quality pharmaceutical products and services. Our vision is to be recognized as a trusted partner in healthcare, committed to excellence, innovation, and customer satisfaction."
+  },
+  "OurMission": {
+    "title": "Our Mission",
+    "subtitle": "Committed to Your Health",
+    "description": "To provide accessible, high-quality pharmaceutical products and services to all communities across Egypt, ensuring the well-being of our customers through innovation, integrity, and excellence.",
+    "content": "Our mission is to manufacture and distribute pharmaceutical products that meet the highest international standards. We are committed to continuous improvement, research and development, and building strong relationships with our customers and partners."
+  },
+  "Certificate": {
+    "title": "Certificate",
+    "subtitle": "Quality and Compliance",
+    "description": "Our certifications demonstrate our commitment to quality, safety, and regulatory compliance in pharmaceutical manufacturing and distribution.",
+    "content": "We maintain the highest standards of quality assurance and regulatory compliance. Our facilities are certified and regularly audited to ensure we meet international pharmaceutical manufacturing standards."
   }
 }

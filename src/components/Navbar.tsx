@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown } from "lucide-react";
-import { ModeToggle } from "./ModeToggle";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
@@ -38,30 +37,24 @@ export function Navbar() {
     <header
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${
         isScrolled
-          ? "bg-background/90 backdrop-blur-md dark:bg-background/95 shadow-md dark:shadow-primary/5"
-          : "bg-background/80 backdrop-blur-sm"
+          ? "bg-black/90 backdrop-blur-md shadow-md shadow-emerald-500/5"
+          : "bg-black/80 backdrop-blur-sm"
       }`}
     >
       <div className="container px-4 md:px-6 mx-auto">
         <div className="flex h-18 items-center justify-between">
           <div className="flex items-center">
-            <Link href="/" className="flex items-center space-x-2 group">
-              <div className="relative h-8 w-8 mr-2">
+            <Link href="/" className="flex items-center group">
+              <div className={`relative ${isArabic ? 'h-12 w-40 md:w-48' : 'h-16 w-64 md:h-20 md:w-96'}`}>
                 <Image
-                  src="/logos/logo.png"
-                  alt="Healthy Pharma Logo"
+                  src={isArabic ? "/logos/full-logo-ar.png" : "/logos/full-logo-en.png"}
+                  alt={isArabic ? "شعار هلثي فارما" : "Healthy Pharma Logo"}
                   fill
-                  className="object-contain transition-all duration-300 group-hover:scale-110"
-                  sizes="32px"
+                  className="object-contain transition-all duration-300 group-hover:scale-105"
+                  sizes={isArabic ? "(max-width: 768px) 160px, 192px" : "(max-width: 768px) 256px, 384px"}
                   priority
                 />
               </div>
-              <span
-                className="hidden sm:inline-block font-bold text-xl text-foreground/90 group-hover:text-primary transition-colors duration-300"
-                style={headingFontStyle}
-              >
-                {isArabic ? "هلثي فارما" : "Healthy Pharma"}
-              </span>
             </Link>
           </div>
 
@@ -80,6 +73,41 @@ export function Navbar() {
               style={bodyFontStyle}
             >
               {t("healthyCure")}
+            </Link>
+            <Link
+              href="/about-us"
+              className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors duration-200 relative after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-primary hover:after:w-full after:transition-all after:duration-300"
+              style={bodyFontStyle}
+            >
+              {t("aboutUs")}
+            </Link>
+            <Link
+              href="/our-vision"
+              className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors duration-200 relative after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-primary hover:after:w-full after:transition-all after:duration-300"
+              style={bodyFontStyle}
+            >
+              {t("ourVision")}
+            </Link>
+            <Link
+              href="/our-mission"
+              className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors duration-200 relative after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-primary hover:after:w-full after:transition-all after:duration-300"
+              style={bodyFontStyle}
+            >
+              {t("ourMission")}
+            </Link>
+            <Link
+              href="/certificate"
+              className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors duration-200 relative after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-primary hover:after:w-full after:transition-all after:duration-300"
+              style={bodyFontStyle}
+            >
+              {t("certificate")}
+            </Link>
+            <Link
+              href="/contact-us"
+              className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors duration-200 relative after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-primary hover:after:w-full after:transition-all after:duration-300"
+              style={bodyFontStyle}
+            >
+              {t("contactUs")}
             </Link>
             <div className="relative group">
               <button
@@ -123,7 +151,6 @@ export function Navbar() {
 
           <div className="flex items-center space-x-4">
             <LanguageSwitcher />
-            <ModeToggle />
             {/* Mobile Menu Button */}
             <Button
               variant="ghost"
@@ -162,6 +189,46 @@ export function Navbar() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 {t("healthyCure")}
+              </Link>
+              <Link
+                href="/about-us"
+                className="block py-2.5 text-sm font-medium text-foreground/80 hover:text-primary transition-colors duration-200"
+                style={bodyFontStyle}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {t("aboutUs")}
+              </Link>
+              <Link
+                href="/our-vision"
+                className="block py-2.5 text-sm font-medium text-foreground/80 hover:text-primary transition-colors duration-200"
+                style={bodyFontStyle}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {t("ourVision")}
+              </Link>
+              <Link
+                href="/our-mission"
+                className="block py-2.5 text-sm font-medium text-foreground/80 hover:text-primary transition-colors duration-200"
+                style={bodyFontStyle}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {t("ourMission")}
+              </Link>
+              <Link
+                href="/certificate"
+                className="block py-2.5 text-sm font-medium text-foreground/80 hover:text-primary transition-colors duration-200"
+                style={bodyFontStyle}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {t("certificate")}
+              </Link>
+              <Link
+                href="/contact-us"
+                className="block py-2.5 text-sm font-medium text-foreground/80 hover:text-primary transition-colors duration-200"
+                style={bodyFontStyle}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {t("contactUs")}
               </Link>
               <div className="py-2">
                 <button

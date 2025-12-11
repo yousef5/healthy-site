@@ -30,9 +30,15 @@ export default function HomeIndex() {
 
   // Array of hero images
   const heroImages = [
-    { id: 1, src: "/images/hero1.jpg", alt: "Pharmaceutical products" },
-    { id: 2, src: "/images/hero2.jpg", alt: "Expert pharmacists" },
-    { id: 3, src: "/images/hero3.jpg", alt: "Modern facilities" },
+    { id: 1, src: "/images/hero1.jpg", alt: "" },
+    { id: 2, src: "/images/hero2.jpg", alt: "" },
+    { id: 3, src: "/images/hero3.jpg", alt: "" },
+    { id: 4, src: "/images/hero4.jpg", alt: "" },
+    { id: 5, src: "/images/hero5.jpg", alt: "" },
+    { id: 6, src: "/images/hero6.jpg", alt: "" },
+    { id: 7, src: "/images/hero7.jpg", alt: "" },
+    { id: 8, src: "/images/hero8.jpg", alt: "" },
+    { id: 9, src: "/images/hero9.jpg", alt: "" },
   ];
 
   // Function to change image randomly

@@ -1,4 +1,5 @@
 import localFont from "next/font/local";
+import { Montserrat } from "next/font/google";
 
 // Arabic fonts
 export const cairo = localFont({
@@ -52,9 +53,17 @@ export const tajawal = localFont({
   display: "swap",
 });
 
-// English font
+// English fonts
 export const inter = localFont({
   src: "../../public/fonts/inter.ttf",
   variable: "--font-inter",
+  display: "swap",
+});
+
+// Google Font - Montserrat
+export const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["800", "900"],
+  variable: "--font-montserrat",
   display: "swap",
 });

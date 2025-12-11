@@ -1,15 +1,20 @@
 "use client";
 import Image from "next/image";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
 
 interface PartnersSectionProps {
   isArabic: boolean;
   headingFontStyle: React.CSSProperties;
   bodyFontStyle: React.CSSProperties;
+}
+
+interface Customer {
+  id: string;
+  nameAr: string;
+  nameEn: string;
+  logo: string;
+  bgWhite?: boolean;
 }
 
 export default function PartnersSection({
@@ -19,348 +24,226 @@ export default function PartnersSection({
 }: PartnersSectionProps) {
   const t = useTranslations("Index");
 
+  // Customer pharmacies data - only from pharmacies folder
+  const customers: Customer[] = [
+    {
+      id: "tarshouby",
+      nameAr: "صيدلية وليد الطرشوبي",
+      nameEn: "Walid El-Tarshoby Pharmacy",
+      logo: "/pharmacies/tarshouby.jpg",
+    },
+    {
+      id: "sally",
+      nameAr: "صيدلية سالي",
+      nameEn: "Sally Pharmacy",
+      logo: "/pharmacies/sally.jpeg",
+    },
+    {
+      id: "khalifa",
+      nameAr: "صيدلية خليفة",
+      nameEn: "Khalifa Pharmacy",
+      logo: "/pharmacies/خليفة.jpg",
+    },
+    {
+      id: "moneer",
+      nameAr: "صيدليات منير",
+      nameEn: "Moneer Pharmacies",
+      logo: "/pharmacies/moneer.webp",
+      bgWhite: true,
+    },
+    {
+      id: "abo-elgeed",
+      nameAr: "صيدليات ابو الغيط بورسعيد",
+      nameEn: "Abu El-Gheid Pharmacies Port Said",
+      logo: "/pharmacies/abo-elgeed.jpeg",
+    },
+    {
+      id: "houl",
+      nameAr: "صيدلية الحول دمياط الجديدة",
+      nameEn: "El-Houl Pharmacy New Damietta",
+      logo: "/pharmacies/houl.jpeg",
+    },
+    {
+      id: "shifq",
+      nameAr: "صيدليات خالد شفيق الجمالية",
+      nameEn: "Khaled Shafiq Pharmacies El-Gamaleya",
+      logo: "/pharmacies/shifq.jpeg",
+    },
+    // Add more customers here easily:
+    // {
+    //   id: "pharmacy-name",
+    //   nameAr: "اسم الصيدلية",
+    //   nameEn: "Pharmacy Name",
+    //   logo: "/pharmacies/pharmacy-logo.jpg",
+    //   bgWhite: true, // optional - add white background for logo
+    // },
+  ];
+
   return (
-    <section className="w-full py-24 relative overflow-hidden bg-gradient-to-b from-background to-background/95">
-      {/* Background elements */}
+    <section className="w-full py-24 md:py-32 bg-black relative overflow-hidden">
+      {/* Subtle Grid Pattern */}
+      <div className="absolute inset-0 opacity-[0.02]" style={{
+        backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
+        backgroundSize: '50px 50px'
+      }} />
+
+      {/* Animated Glow Effects */}
       <motion.div
-        className="absolute top-10 right-10 w-80 h-80 rounded-full blur-3xl bg-primary/5 dark:bg-primary/10"
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.2, 0.3, 0.2],
-          y: [0, -20, 0],
-        }}
-        transition={{
-          duration: 15,
-          repeat: Infinity,
-          repeatType: "reverse",
-        }}
-      />
-      <motion.div
-        className="absolute bottom-20 left-20 w-96 h-96 rounded-full blur-3xl bg-primary/5 dark:bg-primary/10"
         animate={{
           scale: [1, 1.3, 1],
-          opacity: [0.2, 0.4, 0.2],
+          opacity: [0.1, 0.2, 0.1],
         }}
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-          repeatType: "reverse",
+        transition={{ duration: 20, repeat: Infinity }}
+        className="absolute top-1/4 -right-48 w-96 h-96 bg-emerald-500/20 rounded-full blur-3xl"
+      />
+      <motion.div
+        animate={{
+          scale: [1, 1.4, 1],
+          opacity: [0.1, 0.15, 0.1],
         }}
+        transition={{ duration: 25, repeat: Infinity, delay: 5 }}
+        className="absolute bottom-1/4 -left-48 w-[500px] h-[500px] bg-green-500/15 rounded-full blur-3xl"
       />
 
-      <div className="container px-4 md:px-6 mx-auto relative z-10">
+      <div className="container px-6 md:px-12 mx-auto max-w-7xl relative z-10">
+        {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center mb-16 md:mb-20"
         >
-          <div className="inline-block mb-2">
-            <motion.div
-              className="h-1 w-10 bg-primary/60 rounded-full mb-2 mx-auto"
-              initial={{ width: 0 }}
-              whileInView={{ width: 40 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3, duration: 0.5 }}
-            />
-          </div>
           <h2
-            className="text-4xl md:text-5xl font-bold mb-4 tracking-tight"
-            style={headingFontStyle}
+            className={`font-black text-white mb-4 ${
+              isArabic ? 'text-4xl md:text-6xl lg:text-7xl' : 'text-4xl md:text-5xl lg:text-6xl'
+            }`}
+            style={{
+              fontFamily: isArabic ? 'var(--font-cairo)' : 'var(--font-montserrat)',
+            }}
           >
-            {t("ourTrustedPartners")}
+            {t("ourCustomers")}
           </h2>
           <p
-            className="text-lg text-foreground/70 max-w-[700px] mx-auto"
-            style={bodyFontStyle}
+            className={`text-gray-400 max-w-3xl mx-auto leading-relaxed ${
+              isArabic ? 'text-xl md:text-2xl' : 'text-lg md:text-xl'
+            }`}
+            style={{
+              fontFamily: isArabic ? 'var(--font-tajawal)' : 'var(--font-inter)',
+            }}
           >
-            {t("partnersDescription")}
+            {t("customersDescription")}
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
-          {/* Partner 1: Healthy Cure */}
-          <motion.div
-            initial={{ opacity: 0, x: -100, rotateY: 25 }}
-            whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
-            viewport={{ once: true }}
-            transition={{
-              duration: 0.8,
-              type: "spring",
-              stiffness: 100,
-            }}
-          >
+        {/* Customers Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
+          {customers.map((customer, index) => (
             <motion.div
-              whileHover={{
-                y: -15,
-                boxShadow: "0 30px 60px rgba(0,0,0,0.12)",
-                transition: { duration: 0.3 },
+              key={customer.id}
+              initial={{ opacity: 0, y: 30, scale: 0.9 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.6,
+                delay: index * 0.08,
+                ease: [0.22, 1, 0.36, 1]
               }}
-              className="relative group"
+              className="group"
             >
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/20 to-primary/30 rounded-2xl blur opacity-50 group-hover:opacity-100 transition duration-1000 group-hover:duration-300"></div>
-              <Card className="relative overflow-hidden rounded-xl bg-background/70 backdrop-blur-sm border-primary/10 group-hover:border-primary/30 transition-all duration-300">
-                <div className="p-6 md:p-8 flex flex-col items-center relative z-10">
-                  {/* Decorative elements */}
+              <motion.div
+                whileHover={{
+                  y: -10,
+                  scale: 1.03,
+                  transition: { duration: 0.3, ease: "easeOut" }
+                }}
+                className="h-full"
+              >
+                <motion.div
+                  className="relative h-full min-h-[280px] bg-gradient-to-br from-gray-900 to-black rounded-3xl p-6 border border-gray-800 overflow-hidden flex flex-col"
+                  whileHover={{
+                    borderColor: "rgba(16, 185, 129, 0.6)",
+                    boxShadow: "0 20px 40px -10px rgba(16, 185, 129, 0.2)"
+                  }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {/* Glow effect on hover */}
                   <motion.div
-                    className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-b from-primary/10 to-transparent rounded-full opacity-50"
-                    animate={{
-                      scale: [1, 1.2, 1],
-                      opacity: [0.3, 0.5, 0.3],
-                      rotate: [0, 45, 0],
-                    }}
-                    transition={{
-                      duration: 12,
-                      repeat: Infinity,
-                      repeatType: "reverse",
-                    }}
-                  />
-                  <motion.div
-                    className="absolute bottom-0 left-0 w-40 h-40 bg-gradient-to-t from-primary/10 to-transparent rounded-full opacity-40"
-                    animate={{
-                      scale: [1, 1.3, 1],
-                      opacity: [0.2, 0.4, 0.2],
-                      rotate: [0, -45, 0],
-                    }}
-                    transition={{
-                      duration: 10,
-                      repeat: Infinity,
-                      repeatType: "reverse",
-                    }}
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                    transition={{ duration: 0.4 }}
+                    className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-green-500/10 pointer-events-none"
                   />
 
-                  {/* Logo */}
+                  {/* Shine effect on hover */}
                   <motion.div
-                    className="relative w-40 h-40 mb-8 rounded-full overflow-hidden bg-gradient-to-br from-background/80 via-primary/10 to-background/80 p-4 border border-primary/30 shadow-xl flex items-center justify-center z-10"
-                    whileHover={{
-                      scale: 1.1,
-                      rotate: 5,
-                      boxShadow: "0 20px 30px rgba(0,0,0,0.2)",
-                    }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 300,
-                      damping: 15,
-                    }}
-                  >
-                    <div className="relative w-full h-full rounded-full overflow-hidden bg-background/80 p-4 flex items-center justify-center">
-                      <motion.div
-                        animate={{ rotate: 360 }}
-                        transition={{
-                          duration: 40,
-                          repeat: Infinity,
-                          ease: "linear",
-                        }}
-                        className="absolute inset-0 rounded-full border-2 border-dashed border-primary/20 opacity-70"
-                      />
+                    initial={{ x: '-100%', opacity: 0 }}
+                    whileHover={{ x: '100%', opacity: 0.3 }}
+                    transition={{ duration: 0.6, ease: "easeInOut" }}
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent pointer-events-none"
+                    style={{ transform: 'skewX(-20deg)' }}
+                  />
+
+                  {/* Logo Container - Fixed Size */}
+                  <div className="flex-1 flex items-center justify-center mb-4">
+                    <motion.div
+                      className={`relative w-32 h-32 flex items-center justify-center ${
+                        customer.bgWhite ? 'bg-white rounded-2xl p-4 shadow-lg' : ''
+                      }`}
+                      whileHover={{
+                        scale: 1.15,
+                        rotate: [0, -5, 5, 0],
+                        transition: { duration: 0.4 }
+                      }}
+                    >
                       <Image
-                        src="/logos/healthycure.webp"
-                        alt="Healthy Cure Logo"
-                        width={100}
-                        height={100}
-                        className="object-contain relative z-10 hover:scale-110 transition-transform duration-500"
-                      />
-                    </div>
-                  </motion.div>
-
-                  {/* Card Header with fancy title */}
-                  <CardHeader className="p-0 pb-6 text-center w-full">
-                    <div className="relative mb-4">
-                      <div className="absolute top-1/2 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-primary/40 to-transparent"></div>
-                      <motion.div
-                        whileHover={{
-                          scale: 1.05,
-                          transition: { duration: 0.2 },
+                        src={customer.logo}
+                        alt={`${isArabic ? customer.nameAr : customer.nameEn} Logo`}
+                        width={120}
+                        height={120}
+                        className="object-contain w-full h-full"
+                        style={{
+                          filter: customer.bgWhite
+                            ? "drop-shadow(0 4px 10px rgba(16, 185, 129, 0.2))"
+                            : "drop-shadow(0 10px 30px rgba(16, 185, 129, 0.4))"
                         }}
-                        whileTap={{ scale: 0.98 }}
-                      >
-                        <CardTitle
-                          className="relative text-3xl font-bold px-8 py-3 inline-block mx-auto bg-background/80 backdrop-blur-md rounded-lg shadow-sm border border-primary/10"
-                          style={headingFontStyle}
-                        >
-                          {isArabic ? "هيلثي كيور" : "Healthy Cure"}
-                        </CardTitle>
-                      </motion.div>
-                    </div>
-                  </CardHeader>
+                      />
+                    </motion.div>
+                  </div>
 
-                  {/* Card Content */}
-                  <CardContent className="text-center mb-6 w-full">
-                    <p
-                      className="text-foreground/70 text-lg"
-                      style={bodyFontStyle}
+                  {/* Name - Fixed Height */}
+                  <div className="h-16 flex items-center justify-center">
+                    <h3
+                      className={`text-center font-bold text-white transition-all duration-300 group-hover:text-emerald-400 group-hover:scale-105 line-clamp-2 px-2 ${
+                        isArabic ? 'text-base md:text-lg leading-tight' : 'text-sm md:text-base leading-tight'
+                      }`}
+                      style={{
+                        fontFamily: isArabic ? 'var(--font-cairo)' : 'var(--font-montserrat)',
+                      }}
                     >
-                      {isArabic
-                        ? "المكتب العلمي المتخصص في تطوير وتصنيع الأدوية عالية الجودة مثل أوميبيور وجيرميتين"
-                        : "Scientific office specializing in the development and manufacture of high-quality medications like Omepure and Germytin"}
-                    </p>
-                  </CardContent>
+                      {isArabic ? customer.nameAr : customer.nameEn}
+                    </h3>
+                  </div>
 
-                  {/* Button */}
+                  {/* Decorative bottom line */}
                   <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="w-full"
-                  >
-                    <Button
-                      variant="default"
-                      className="bg-primary/90 hover:bg-primary w-full py-6 text-base shadow-lg relative overflow-hidden group"
-                      style={bodyFontStyle}
-                      asChild
-                    >
-                      <Link href="/healthycure">
-                        <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:translate-x-full transition-transform duration-700 ease-in-out"></span>
-                        {isArabic ? "اكتشف منتجاتنا" : "Discover Our Products"}
-                      </Link>
-                    </Button>
-                  </motion.div>
-                </div>
-              </Card>
-            </motion.div>
-          </motion.div>
-
-          {/* Partner 2: Moneer Pharmacies */}
-          <motion.div
-            initial={{ opacity: 0, x: 100, rotateY: -25 }}
-            whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
-            viewport={{ once: true }}
-            transition={{
-              duration: 0.8,
-              delay: 0.2,
-              type: "spring",
-              stiffness: 100,
-            }}
-          >
-            <motion.div
-              whileHover={{
-                y: -15,
-                boxShadow: "0 30px 60px rgba(0,0,0,0.12)",
-                transition: { duration: 0.3 },
-              }}
-              className="relative group"
-            >
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/30 to-primary/20 rounded-2xl blur opacity-50 group-hover:opacity-100 transition duration-1000 group-hover:duration-300"></div>
-              <Card className="relative overflow-hidden rounded-xl bg-background/70 backdrop-blur-sm border-primary/10 group-hover:border-primary/30 transition-all duration-300">
-                <div className="p-6 md:p-8 flex flex-col items-center relative z-10">
-                  {/* Decorative elements */}
-                  <motion.div
-                    className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-b from-primary/10 to-transparent rounded-full opacity-50"
-                    animate={{
-                      scale: [1, 1.2, 1],
-                      opacity: [0.3, 0.5, 0.3],
-                      rotate: [0, -45, 0],
-                    }}
-                    transition={{
-                      duration: 12,
-                      repeat: Infinity,
-                      repeatType: "reverse",
-                    }}
-                  />
-                  <motion.div
-                    className="absolute bottom-0 right-0 w-40 h-40 bg-gradient-to-t from-primary/10 to-transparent rounded-full opacity-40"
-                    animate={{
-                      scale: [1, 1.3, 1],
-                      opacity: [0.2, 0.4, 0.2],
-                      rotate: [0, 45, 0],
-                    }}
-                    transition={{
-                      duration: 10,
-                      repeat: Infinity,
-                      repeatType: "reverse",
-                    }}
+                    initial={{ scaleX: 0 }}
+                    whileHover={{ scaleX: 1 }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
+                    className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-emerald-500 to-transparent origin-center"
                   />
 
-                  {/* Logo */}
+                  {/* Corner accent */}
                   <motion.div
-                    className="relative w-40 h-40 mb-8 rounded-full overflow-hidden bg-gradient-to-br from-background/80 via-primary/10 to-background/80 p-4 border border-primary/30 shadow-xl flex items-center justify-center z-10"
-                    whileHover={{
-                      scale: 1.1,
-                      rotate: -5,
-                      boxShadow: "0 20px 30px rgba(0,0,0,0.2)",
-                    }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 300,
-                      damping: 15,
-                    }}
-                  >
-                    <div className="relative w-full h-full rounded-full overflow-hidden bg-background/80 p-4 flex items-center justify-center">
-                      <motion.div
-                        animate={{ rotate: -360 }}
-                        transition={{
-                          duration: 40,
-                          repeat: Infinity,
-                          ease: "linear",
-                        }}
-                        className="absolute inset-0 rounded-full border-2 border-dashed border-primary/20 opacity-70"
-                      />
-                      <Image
-                        src="/logos/moneer.webp"
-                        alt="Moneer Pharmacies Logo"
-                        width={100}
-                        height={100}
-                        className="object-contain relative z-10 hover:scale-110 transition-transform duration-500"
-                      />
-                    </div>
-                  </motion.div>
-
-                  {/* Card Header with fancy title */}
-                  <CardHeader className="p-0 pb-6 text-center w-full">
-                    <div className="relative mb-4">
-                      <div className="absolute top-1/2 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-primary/40 to-transparent"></div>
-                      <motion.div
-                        whileHover={{
-                          scale: 1.05,
-                          transition: { duration: 0.2 },
-                        }}
-                        whileTap={{ scale: 0.98 }}
-                      >
-                        <CardTitle
-                          className="relative text-3xl font-bold px-8 py-3 inline-block mx-auto bg-background/80 backdrop-blur-md rounded-lg shadow-sm border border-primary/10"
-                          style={headingFontStyle}
-                        >
-                          {isArabic ? "صيدليات منير" : "Moneer Pharmacies"}
-                        </CardTitle>
-                      </motion.div>
-                    </div>
-                  </CardHeader>
-
-                  {/* Card Content */}
-                  <CardContent className="text-center mb-6 w-full">
-                    <p
-                      className="text-foreground/70 text-lg"
-                      style={bodyFontStyle}
-                    >
-                      {isArabic
-                        ? "سلسلة صيدليات رائدة في المنصورة توفر تجربة صيدلانية موثوقة ومتكاملة للمرضى والعملاء"
-                        : "Leading pharmacy chain in Mansoura providing a trusted, seamless pharmaceutical experience to patients and customers"}
-                    </p>
-                  </CardContent>
-
-                  {/* Button */}
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="w-full"
-                  >
-                    <Button
-                      variant="default"
-                      className="bg-primary/90 hover:bg-primary w-full py-6 text-base shadow-lg relative overflow-hidden group"
-                      style={bodyFontStyle}
-                      asChild
-                      disabled
-                    >
-                      <Link href="/">
-                        <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:translate-x-full transition-transform duration-700 ease-in-out"></span>
-                        {isArabic ? "تعرف على فروعنا" : "Find Our Locations"}
-                      </Link>
-                    </Button>
-                  </motion.div>
-                </div>
-              </Card>
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                    className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-emerald-500/20 to-transparent rounded-bl-full"
+                  />
+                </motion.div>
+              </motion.div>
             </motion.div>
-          </motion.div>
+          ))}
         </div>
       </div>
     </section>

@@ -16,6 +16,7 @@ import {
   tajawalRegular,
   tajawalBold,
   inter,
+  montserrat,
 } from "@/lib/fonts";
 
 export default async function RootLayout({
@@ -88,7 +89,7 @@ export default async function RootLayout({
           ${
             isArabic
               ? `${cairo.variable} ${tajawal.variable} ${tajawalLight.variable} ${tajawalRegular.variable} ${tajawalBold.variable}`
-              : inter.variable
+              : `${inter.variable} ${montserrat.variable}`
           }
           antialiased
         `}
@@ -97,7 +98,8 @@ export default async function RootLayout({
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
-          enableSystem
+          enableSystem={false}
+          forcedTheme="dark"
           disableTransitionOnChange
         >
           <NextIntlClientProvider>{children}</NextIntlClientProvider>
