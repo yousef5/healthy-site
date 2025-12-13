@@ -126,9 +126,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 For any inquiries, please contact:
 
-- Email: info@healthy.eg
+- Email: info@healthy.com.eg
 - Phone: +20 050 2338989
-- Address: 14 Sherif El-Rady St., Old Tawriel, Mansoura, Egypt
+- Address: 17 Sherif El-Rady St., Old Tawriel, Mansoura, Egypt
 
 ---
 

@@ -1,0 +1,51 @@
+{
+  "public": "out",
+  "cleanUrls": true,
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/en/"
+    },
+    {
+      "source": "/en",
+      "destination": "/en/"
+    },
+    {
+      "source": "/ar",
+      "destination": "/ar/"
+    },
+    {
+      "source": "/prices/:product",
+      "destination": "/en/prices/:product"
+    },
+    {
+      "source": "/about-us",
+      "destination": "/en/about-us"
+    },
+    {
+      "source": "/contact-us",
+      "destination": "/en/contact-us"
+    },
+    {
+      "source": "/certificate",
+      "destination": "/en/certificate"
+    },
+    {
+      "source": "/our-vision",
+      "destination": "/en/our-vision"
+    },
+    {
+      "source": "/our-mission",
+      "destination": "/en/our-mission"
+    },
+    {
+      "source": "/healthycure",
+      "destination": "/en/healthycure"
+    },
+    {
+      "source": "/products/:product",
+      "destination": "/en/products/:product"
+    }
+  ]
+}

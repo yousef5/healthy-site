@@ -40,13 +40,26 @@ else
     echo -e "${GREEN}[2/5] ✓ Dependencies already installed${NC}"
 fi
 
-# Build static site
-echo -e "${YELLOW}[3/5] Building static site...${NC}"
+# Build static site for cPanel (no basePath)
+echo -e "${YELLOW}[3/4] Building static site for cPanel...${NC}"
 STATIC_EXPORT=true bun run build
+echo -e "${GREEN}✓ Build complete${NC}"
 
-# Run restructure script
-echo -e "${YELLOW}[4/5] Restructuring for static deployment...${NC}"
-node scripts/restructure-static.js
+# Verify important files exist
+echo -e "${YELLOW}[4/4] Verifying build output...${NC}"
+if [ ! -f "out/.htaccess" ]; then
+    echo -e "${RED}✗ .htaccess not found!${NC}"
+    exit 1
+fi
+if [ ! -f "out/en/index.html" ]; then
+    echo -e "${RED}✗ English index.html not found!${NC}"
+    exit 1
+fi
+if [ ! -f "out/ar/index.html" ]; then
+    echo -e "${RED}✗ Arabic index.html not found!${NC}"
+    exit 1
+fi
+echo -e "${GREEN}✓ All critical files present${NC}"
 
 # Create zip file
 echo -e "${YELLOW}[5/5] Creating zip archive...${NC}"
@@ -76,8 +89,14 @@ echo "7. Move all files from extracted folder to public_html root"
 echo "8. Delete the zip file and empty folder"
 echo ""
 echo -e "${YELLOW}Important:${NC}"
-echo "- Make sure .htaccess is uploaded (for clean URLs)"
+echo "- Make sure .htaccess is uploaded (handles redirects & clean URLs)"
 echo "- Set folder permissions to 755"
 echo "- Set file permissions to 644"
 echo ""
-echo -e "${GREEN}Your site is ready for deployment!${NC}"
+echo -e "${YELLOW}URL Structure:${NC}"
+echo "- Your site will redirect: / → /en/ (English default)"
+echo "- English site: https://yourdomain.com/en/"
+echo "- Arabic site: https://yourdomain.com/ar/"
+echo "- Case-insensitive URLs work (e.g., /en/prices/Omepure10ml/ → /en/prices/omepure10ml/)"
+echo ""
+echo -e "${GREEN}Your site is ready for cPanel deployment!${NC}"

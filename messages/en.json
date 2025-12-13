@@ -123,9 +123,59 @@
   "AboutUs": {
     "title": "About Us",
     "subtitle": "Your Health is Our Responsibility",
+    "heroTitle": "Leading Pharmaceutical Excellence in Egypt",
+    "heroDescription": "We are a fully integrated pharmaceutical entity, covering all of Egypt through a robust distribution network of over 6,000 pharmacies, 450 employees, and 59 vehicles.",
     "description": "We are a fully integrated pharmaceutical entity, covering all of Egypt through a robust distribution network of over 6,000 pharmacies, 450 employees, and 59 vehicles.",
     "mission": "Our Mission",
-    "vision": "Our Vision"
+    "vision": "Our Vision",
+    "missionTitle": "Our Mission",
+    "missionDescription": "To provide accessible, high-quality pharmaceutical products and services to all communities across Egypt, ensuring the well-being of our customers through innovation, integrity, and excellence.",
+    "visionTitle": "Our Vision",
+    "visionDescription": "To be the leading pharmaceutical company in Egypt and the Middle East, providing innovative healthcare solutions that improve the quality of life for our customers.",
+    "whoWeAre": "Who We Are",
+    "whoWeAreDescription": "Healthy Pharmaceutical & Medical Industries is a pioneering pharmaceutical company dedicated to improving healthcare across Egypt. With decades of experience in pharmaceutical manufacturing and distribution, we have established ourselves as a trusted name in the industry.",
+    "whatWeDo": "What We Do",
+    "whatWeDoDescription": "We manufacture and distribute high-quality pharmaceutical products, dietary supplements, and medical supplies. Our comprehensive portfolio includes HealthyCure brand products such as Omepure, Germitin, AlfaMore, and many more trusted medications.",
+    "stats": {
+      "pharmacies": "Pharmacies",
+      "pharmaciesValue": "6,000+",
+      "employees": "Employees",
+      "employeesValue": "450+",
+      "vehicles": "Distribution Vehicles",
+      "vehiclesValue": "59",
+      "experience": "Years of Experience",
+      "experienceValue": "20+"
+    },
+    "values": {
+      "title": "Our Core Values",
+      "quality": {
+        "title": "Quality Excellence",
+        "description": "We maintain the highest standards in pharmaceutical manufacturing and distribution, certified by ISO 9001:2015 and GSDP."
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "Continuously developing and introducing new pharmaceutical solutions to meet evolving healthcare needs."
+      },
+      "integrity": {
+        "title": "Integrity",
+        "description": "Operating with transparency, honesty, and ethical practices in all our business operations."
+      },
+      "customer": {
+        "title": "Customer Focus",
+        "description": "Prioritizing customer satisfaction and well-being in everything we do, from product development to distribution."
+      }
+    },
+    "certifications": {
+      "title": "Certified Excellence",
+      "description": "Our commitment to quality is validated by international certifications",
+      "iso": "ISO 9001:2015 Quality Management System",
+      "gsdp": "GSDP - Good Storage and Distribution Practices"
+    },
+    "cta": {
+      "title": "Ready to Partner with Us?",
+      "description": "Join thousands of pharmacies across Egypt trusting Healthy Pharma for quality pharmaceutical products.",
+      "button": "Contact Us Today"
+    }
   },
   "ContactUs": {
     "title": "Contact Us",
@@ -134,26 +184,135 @@
     "email": "Email",
     "phone": "Phone",
     "address": "Address",
-    "emailValue": "info@healthy.eg",
+    "emailValue": "info@healthy.com.eg",
     "phoneValue": "+20 050 2338989",
-    "addressValue": "14 Sherif El-Rady St., Old Tawriel, Mansoura, Egypt"
+    "addressValue": "17 Sherif El-Rady St., Old Tawriel, Mansoura, Egypt"
   },
   "OurVision": {
     "title": "Our Vision",
     "subtitle": "Excellence in Healthcare",
+    "heroTitle": "Envisioning a Healthier Tomorrow",
     "description": "To be the leading pharmaceutical company in Egypt and the Middle East, providing innovative healthcare solutions that improve the quality of life for our customers.",
-    "content": "We strive to create a healthier future by delivering high-quality pharmaceutical products and services. Our vision is to be recognized as a trusted partner in healthcare, committed to excellence, innovation, and customer satisfaction."
+    "content": "We strive to create a healthier future by delivering high-quality pharmaceutical products and services. Our vision is to be recognized as a trusted partner in healthcare, committed to excellence, innovation, and customer satisfaction.",
+    "goals": {
+      "title": "Our Strategic Goals",
+      "leadership": {
+        "title": "Market Leadership",
+        "description": "Become the #1 pharmaceutical distributor in Egypt and expand to the Middle East region."
+      },
+      "innovation": {
+        "title": "Innovation Excellence",
+        "description": "Continuously develop cutting-edge pharmaceutical solutions that meet evolving healthcare needs."
+      },
+      "quality": {
+        "title": "Quality Standards",
+        "description": "Maintain the highest international quality standards in all our products and services."
+      },
+      "accessibility": {
+        "title": "Healthcare Accessibility",
+        "description": "Make quality pharmaceutical products accessible to every community across Egypt."
+      }
+    },
+    "future": {
+      "title": "Looking to the Future",
+      "content": "We envision a future where every Egyptian has access to high-quality, affordable pharmaceutical products. Our commitment to innovation, quality, and customer service drives us to continuously improve and expand our offerings."
+    },
+    "commitment": {
+      "title": "Our Commitment",
+      "quality": "Quality in every product",
+      "innovation": "Innovation in every solution",
+      "service": "Service in every interaction",
+      "trust": "Trust in every relationship"
+    },
+    "cta": {
+      "title": "Join Us in Our Vision",
+      "description": "Partner with us to create a healthier future for Egypt and the Middle East.",
+      "button": "Learn More About Us"
+    }
   },
   "OurMission": {
     "title": "Our Mission",
     "subtitle": "Committed to Your Health",
+    "heroTitle": "Your Health is Our Responsibility",
     "description": "To provide accessible, high-quality pharmaceutical products and services to all communities across Egypt, ensuring the well-being of our customers through innovation, integrity, and excellence.",
-    "content": "Our mission is to manufacture and distribute pharmaceutical products that meet the highest international standards. We are committed to continuous improvement, research and development, and building strong relationships with our customers and partners."
+    "content": "Our mission is to manufacture and distribute pharmaceutical products that meet the highest international standards. We are committed to continuous improvement, research and development, and building strong relationships with our customers and partners.",
+    "pillars": {
+      "title": "Our Mission Pillars",
+      "manufacturing": {
+        "title": "Quality Manufacturing",
+        "description": "Produce pharmaceutical products that exceed international quality standards and regulatory requirements."
+      },
+      "distribution": {
+        "title": "Reliable Distribution",
+        "description": "Ensure timely and safe delivery of medications to 6,000+ pharmacies across Egypt through our certified GSDP network."
+      },
+      "innovation": {
+        "title": "Continuous Innovation",
+        "description": "Invest in research and development to bring new and improved pharmaceutical solutions to market."
+      },
+      "service": {
+        "title": "Customer Excellence",
+        "description": "Build lasting partnerships with pharmacies and healthcare providers through exceptional service and support."
+      }
+    },
+    "approach": {
+      "title": "Our Approach",
+      "content": "We approach every aspect of our business with integrity, professionalism, and a deep commitment to improving healthcare outcomes. From manufacturing to distribution, every step is guided by our mission to serve the health needs of Egyptian communities."
+    },
+    "impact": {
+      "title": "Making an Impact",
+      "pharmacies": "Serving 6,000+ pharmacies nationwide",
+      "employees": "450+ dedicated healthcare professionals",
+      "quality": "ISO 9001:2015 & GSDP certified operations",
+      "commitment": "20+ years of trusted healthcare service"
+    },
+    "cta": {
+      "title": "Partner with Excellence",
+      "description": "Join our network of trusted pharmacy partners and deliver quality healthcare to your community.",
+      "button": "Contact Us Today"
+    }
   },
   "Certificate": {
-    "title": "Certificate",
-    "subtitle": "Quality and Compliance",
-    "description": "Our certifications demonstrate our commitment to quality, safety, and regulatory compliance in pharmaceutical manufacturing and distribution.",
-    "content": "We maintain the highest standards of quality assurance and regulatory compliance. Our facilities are certified and regularly audited to ensure we meet international pharmaceutical manufacturing standards."
+    "title": "Our Certifications",
+    "subtitle": "Quality and Compliance Excellence",
+    "description": "Our certifications demonstrate our unwavering commitment to quality, safety, and regulatory compliance in pharmaceutical manufacturing and distribution.",
+    "content": "We maintain the highest standards of quality assurance and regulatory compliance. Our facilities are certified and regularly audited to ensure we meet international pharmaceutical manufacturing standards.",
+    "pageDescription": "Healthy Pharma certifications - ISO 9001:2015, GSDP, and pharmaceutical quality standards. View our official certificates demonstrating compliance with international pharmaceutical storage, distribution and quality management regulations.",
+    "certificates": {
+      "gsdp": {
+        "title": "GSDP Certificate",
+        "fullTitle": "Good Storage and Distribution Practices Certification",
+        "description": "Our GSDP certification validates that our pharmaceutical storage and distribution operations meet the highest standards. This certification ensures that pharmaceutical products are stored and distributed under controlled conditions maintaining their quality and integrity throughout the supply chain.",
+        "issuedBy": "Egyptian Drug Authority (EDA)",
+        "features": [
+          "Compliance with GSDP international standards",
+          "Proper storage conditions and temperature control",
+          "Quality-assured distribution network",
+          "Comprehensive tracking and documentation systems"
+        ]
+      },
+      "iso": {
+        "title": "ISO 9001:2015",
+        "fullTitle": "ISO 9001:2015 Quality Management System",
+        "description": "Our ISO 9001:2015 certification demonstrates our commitment to maintaining a robust quality management system for import and export of pharmaceutical, food supplements, and cosmetics products. This international standard ensures we consistently provide products and services that meet customer and regulatory requirements.",
+        "issuedBy": "Eriva Certificate of Approval - IAF Accredited",
+        "features": [
+          "Customer-focused quality management",
+          "Process approach to operations",
+          "Continuous improvement culture",
+          "Evidence-based decision making"
+        ]
+      }
+    },
+    "downloadCertificate": "Download Certificate",
+    "viewCertificate": "View Certificate",
+    "certificationFeatures": {
+      "quality": "Quality Assurance",
+      "qualityDesc": "International quality standards",
+      "compliance": "Regulatory Compliance",
+      "complianceDesc": "Full regulatory compliance",
+      "audits": "Regular Audits",
+      "auditsDesc": "Periodic quality reviews"
+    }
   }
 }

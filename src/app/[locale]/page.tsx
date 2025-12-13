@@ -13,3 +13,7 @@ export default function HomePage({
 
   return <HomeIndex />;
 }
+
+export function generateStaticParams() {
+  return [{ locale: "ar" }, { locale: "en" }];
+}

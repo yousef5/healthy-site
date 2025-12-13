@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import {
   Building,
   Clock,
@@ -9,6 +8,9 @@ import {
   MapPin,
   MessageSquare,
   Phone,
+  Facebook,
+  Instagram,
+  Youtube,
 } from "lucide-react";
 
 interface ContactSectionProps {
@@ -35,16 +37,16 @@ export default function ContactSection({
       id: "email",
       titleEn: "Email",
       titleAr: "البريد الإلكتروني",
-      valueEn: "info@healthy.eg",
-      valueAr: "info@healthy.eg",
+      valueEn: "info@healthy.com.eg",
+      valueAr: "info@healthy.com.eg",
       icon: <Mail size={16} />,
     },
     {
       id: "address",
       titleEn: "Office Address",
       titleAr: "عنوان المكتب",
-      valueEn: "14 Sherif El-Rady St., Old Tawriel, Mansoura, Egypt",
-      valueAr: "١٤ شارع شريف الراضي، توريل القديمة، المنصورة، مصر",
+      valueEn: "17 Sherif El-Rady St., Old Tawriel, Mansoura, Egypt",
+      valueAr: "١٧ شارع شريف الراضي، عمارة هيلثي، توريل القديمة، المنصورة، مصر",
       icon: <Building size={16} />,
     },
     {
@@ -146,19 +148,19 @@ export default function ContactSection({
                   <div className="flex space-x-1.5 rtl:space-x-reverse">
                     {[
                       {
-                        name: "facebook",
+                        name: "Facebook",
                         url: "https://www.facebook.com/HealthyCure2020",
-                        img: "/images/facebook.png",
+                        icon: Facebook,
                       },
                       {
-                        name: "instagram",
+                        name: "Instagram",
                         url: "https://www.instagram.com/healthycure_insta/",
-                        img: "/images/instagram.png",
+                        icon: Instagram,
                       },
                       {
-                        name: "youtube",
+                        name: "YouTube",
                         url: "https://www.youtube.com/@healthycure105",
-                        img: "/images/youtube.png",
+                        icon: Youtube,
                       },
                     ].map((social) => (
                       <a
@@ -167,13 +169,9 @@ export default function ContactSection({
                         target="_blank"
                         rel="noopener noreferrer"
                         className="p-1.5 rounded-full bg-muted hover:bg-primary/10 text-muted-foreground hover:text-primary transition-colors"
+                        aria-label={social.name}
                       >
-                        <Image
-                          src={social.img}
-                          alt={social.name}
-                          width={12}
-                          height={12}
-                        />
+                        <social.icon size={14} />
                       </a>
                     ))}
                   </div>
@@ -273,8 +271,8 @@ export default function ContactSection({
                           style={bodyFontStyle}
                         >
                           {isArabic
-                            ? "١٤ شارع شريف الراضي"
-                            : "14 Sherif El-Rady St."}
+                            ? "١٧ شارع شريف الراضي، عمارة هيلثي"
+                            : "17 Sherif El-Rady St."}
                         </p>
                       </div>
                     </div>

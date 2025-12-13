@@ -5,12 +5,14 @@
   "description": "Healthy Web App - A modern healthcare platform built with Next.js",
   "author": "Healthy Cure",
   "scripts": {
+    "serve:out": "serve -c serve.json",
     "dev": "next dev",
     "build": "next build",
     "build:static": "STATIC_EXPORT=true next build && node scripts/restructure-static.js",
+    "build:local": "STATIC_EXPORT=true next build",
     "build:cpanel": "bash scripts/build-cpanel.sh",
     "build:gh-pages": "GITHUB_ACTIONS=true next build",
-    "serve": "npx serve out -p 3000",
+    "serve": "serve out -c serve.json -p 3000",
     "start": "next start",
     "lint": "next lint"
   },

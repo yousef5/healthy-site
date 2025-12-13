@@ -22,14 +22,6 @@ export const ProductsSection = ({
     setIsDarkMode(resolvedTheme === "dark");
   }, [resolvedTheme]);
 
-  // Get locale prefix for links
-  const getLocalePath = (path: string) => {
-    if (!isArabic) {
-      return `/_locales/en${path}`;
-    }
-    return path;
-  };
-
   // Product data with prices in EGP
   const products = [
     {
@@ -39,7 +31,7 @@ export const ProductsSection = ({
       alt: isArabic ? "اوميبيور نقط" : "Omepure Drops",
       imageWidth: 420,
       imageHeight: 420,
-      url: getLocalePath("/products/omepure"),
+      url: "/products/omepure",
       price: "75",
       details: isArabic ? "نقط" : "Drops",
     },
@@ -50,7 +42,7 @@ export const ProductsSection = ({
       alt: isArabic ? "الفا مور اكياس" : "AlfaMore Bags",
       imageWidth: 480,
       imageHeight: 480,
-      url: getLocalePath("/products/alfamore"),
+      url: "/products/alfamore",
       price: "89",
       details: isArabic ? "15 كيس" : "15 Bags",
     },
@@ -61,7 +53,7 @@ export const ProductsSection = ({
       alt: isArabic ? "الفا فريش اكياس" : "AlfaFresh Bags",
       imageWidth: 440,
       imageHeight: 440,
-      url: getLocalePath("/products/alfafresh"),
+      url: "/products/alfafresh",
       price: "40",
       details: isArabic ? "15 كيس" : "15 Bags",
     },
@@ -72,7 +64,7 @@ export const ProductsSection = ({
       alt: isArabic ? "جيرميتين نقط" : "Germitin Drops",
       imageWidth: 300,
       imageHeight: 300,
-      url: getLocalePath("/products/germitin"),
+      url: "/products/germitin",
       price: "57",
       details: isArabic ? "نقط" : "Drops",
     },

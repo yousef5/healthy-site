@@ -73,7 +73,7 @@ export default async function RootLayout({
               : "Healthy Pharma - Leading pharmaceutical manufacturer and distributor in Egypt",
             address: {
               "@type": "PostalAddress",
-              streetAddress: "14 Sherif El-Rady St., Old Tawriel",
+              streetAddress: "17 Sherif El-Rady St., Old Tawriel",
               addressLocality: "Mansoura",
               addressCountry: "Egypt",
             },

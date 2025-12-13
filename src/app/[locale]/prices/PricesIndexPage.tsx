@@ -2,7 +2,7 @@
 
 import { useParams } from "next/navigation";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import {
   Facebook,
   Instagram,
@@ -111,13 +111,6 @@ export default function PricesIndexPage() {
   const locale = params.locale as string;
   const isArabic = locale === "ar";
 
-  const getLocalePath = (path: string) => {
-    if (locale === "en") {
-      return `/_locales/en${path}`;
-    }
-    return path;
-  };
-
   return (
     <div
       className="min-h-screen relative overflow-hidden"
@@ -142,7 +135,7 @@ export default function PricesIndexPage() {
         {/* Header */}
         <header className="p-6 animate-fade-in">
           <div className="container mx-auto flex items-center justify-between">
-            <Link href={getLocalePath("/")} className="flex items-center gap-3 group">
+            <Link href="/" className="flex items-center gap-3 group">
               <div className="relative w-12 h-12 md:w-14 md:h-14">
                 <Image
                   src="/logos/healthycure.webp"
@@ -159,7 +152,7 @@ export default function PricesIndexPage() {
             </Link>
 
             <Link
-              href={getLocalePath("/")}
+              href="/"
               className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white/20 transition-colors duration-200"
             >
               {isArabic ? (
@@ -205,7 +198,7 @@ export default function PricesIndexPage() {
                 className="animate-fade-in-up"
                 style={{ animationDelay: `${index * 50}ms` }}
               >
-                <Link href={getLocalePath(`/prices/${product.path}`)} className="block group">
+                <Link href={`/prices/${product.path}`} className="block group">
                   <div className="relative">
                     {/* Card glow on hover - CSS only */}
                     <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500 via-cyan-500 to-purple-500 rounded-3xl blur-lg opacity-0 group-hover:opacity-50 transition-opacity duration-300" />

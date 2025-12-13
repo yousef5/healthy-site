@@ -2,7 +2,7 @@
 
 import { useParams } from "next/navigation";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { Facebook, Instagram, Youtube, Home, Sparkles } from "lucide-react";
 
 type ProductType = {
@@ -85,13 +85,6 @@ export default function PricesProductPage() {
   const productId = params.productId as string;
   const isArabic = locale === "ar";
 
-  const getLocalePath = (path: string) => {
-    if (locale === "en") {
-      return `/_locales/en${path}`;
-    }
-    return path;
-  };
-
   const product = products.find(
     (p) => p.path.toLowerCase() === productId?.toLowerCase()
   );
@@ -104,7 +97,7 @@ export default function PricesProductPage() {
             {isArabic ? "المنتج غير موجود" : "Product Not Found"}
           </h1>
           <Link
-            href={getLocalePath("/prices")}
+            href="/prices"
             className="text-emerald-400 hover:underline"
           >
             {isArabic ? "العودة للأسعار" : "Back to Prices"}
@@ -130,7 +123,7 @@ export default function PricesProductPage() {
 
       {/* Header */}
       <header className="relative z-10 flex items-center justify-between px-4 py-4 animate-fade-in">
-        <Link href={getLocalePath("/prices")}>
+        <Link href="/prices">
           <div className="bg-white/10 backdrop-blur-md rounded-2xl p-2 border border-white/20 hover:bg-white/20 transition-colors">
             <Image
               src="/logos/healthycure.webp"
@@ -143,7 +136,7 @@ export default function PricesProductPage() {
           </div>
         </Link>
         <Link
-          href={getLocalePath("/prices")}
+          href="/prices"
           className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md text-white text-sm font-medium border border-white/20 hover:bg-white/20 transition-colors"
         >
           <Home className="w-4 h-4" />
@@ -166,7 +159,7 @@ export default function PricesProductPage() {
 
               {/* Logo in card */}
               <div className="absolute top-4 left-4 z-20 animate-scale-in" style={{ animationDelay: "100ms" }}>
-                <Link href={getLocalePath("/prices")}>
+                <Link href="/prices">
                   <div className="bg-white/90 rounded-xl p-1.5 shadow-lg hover:scale-105 transition-transform">
                     <Image
                       src="/logos/healthycure.webp"

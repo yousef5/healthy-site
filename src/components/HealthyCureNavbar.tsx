@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
@@ -13,14 +13,6 @@ export function HealthyCureNavbar() {
   const t = useTranslations("Navbar");
   const locale = useLocale();
   const isArabic = locale === "ar";
-
-  // Get locale prefix for links
-  const getLocalePath = (path: string) => {
-    if (locale === "en") {
-      return `/_locales/en${path}`;
-    }
-    return path;
-  };
 
   const bodyFontStyle = isArabic
     ? { fontFamily: "var(--font-tajawal)", fontWeight: 700 }
@@ -38,7 +30,7 @@ export function HealthyCureNavbar() {
 
   // Products for HealthyCure
   const products = [
-    { href: getLocalePath("/products/omepure"), nameAr: "أوميبور", nameEn: "Omepure", active: true },
+    { href: "/products/omepure", nameAr: "أوميبور", nameEn: "Omepure", active: true },
     { href: "#", nameAr: "ألفا مور", nameEn: "Alfa More", active: false },
     { href: "#", nameAr: "ألفا فريش", nameEn: "Alfa Fresh", active: false },
     { href: "#", nameAr: "جيرمتين", nameEn: "Germetin", active: false },
@@ -56,7 +48,7 @@ export function HealthyCureNavbar() {
         <div className="flex h-18 items-center justify-between">
           {/* Logo - Links to HealthyCure */}
           <div className="flex items-center">
-            <Link href={getLocalePath("/healthycure")} className="flex items-center group">
+            <Link href="/healthycure" className="flex items-center group">
               <div className={`relative ${isArabic ? 'h-12 w-40 md:w-48' : 'h-16 w-64 md:h-20 md:w-96'}`}>
                 <Image
                   src={isArabic ? "/logos/full-logo-ar.webp" : "/logos/full-logo-en.webp"}
@@ -73,14 +65,14 @@ export function HealthyCureNavbar() {
           {/* Desktop Navigation - Only Products */}
           <nav className="hidden md:flex items-center space-x-8">
             <Link
-              href={getLocalePath("/healthycure")}
+              href="/healthycure"
               className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors duration-200 relative after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-primary hover:after:w-full after:transition-all after:duration-300"
               style={bodyFontStyle}
             >
               {isArabic ? "الرئيسية" : "Main"}
             </Link>
             <Link
-              href={getLocalePath("/prices")}
+              href="/prices"
               className="relative px-4 py-2 text-sm font-bold rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 hover:scale-105 transition-all duration-300 flex items-center gap-2"
               style={bodyFontStyle}
             >
@@ -112,7 +104,7 @@ export function HealthyCureNavbar() {
           <div className="flex items-center gap-3">
             {/* Healthy - Return to Main */}
             <Link
-              href={getLocalePath("/")}
+              href="/"
               className="hidden md:inline-flex relative px-4 py-2 text-sm font-extrabold rounded-full bg-gradient-to-r from-emerald-500/20 to-teal-500/20 border border-emerald-500/30 text-emerald-400 hover:from-emerald-500/30 hover:to-teal-500/30 hover:border-emerald-400/50 hover:text-emerald-300 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/20"
               style={{ fontFamily: "var(--font-montserrat)" }}
             >
@@ -144,7 +136,7 @@ export function HealthyCureNavbar() {
             <nav className="space-y-4">
               {/* HealthyCure Main */}
               <Link
-                href={getLocalePath("/healthycure")}
+                href="/healthycure"
                 className="block py-2.5 text-sm font-medium text-foreground/80 hover:text-primary transition-colors duration-200"
                 style={bodyFontStyle}
                 onClick={() => setIsMenuOpen(false)}
@@ -154,7 +146,7 @@ export function HealthyCureNavbar() {
 
               {/* Prices - Special Button */}
               <Link
-                href={getLocalePath("/prices")}
+                href="/prices"
                 className="inline-flex px-5 py-2.5 text-sm font-bold rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 transition-all duration-300"
                 style={bodyFontStyle}
                 onClick={() => setIsMenuOpen(false)}
@@ -164,7 +156,7 @@ export function HealthyCureNavbar() {
 
               {/* Healthy - Return to Main Site */}
               <Link
-                href={getLocalePath("/")}
+                href="/"
                 className="inline-block px-3 py-1.5 text-sm font-extrabold rounded-full bg-gradient-to-r from-emerald-500/20 to-teal-500/20 border border-emerald-500/30 text-emerald-400 hover:from-emerald-500/30 hover:to-teal-500/30 hover:border-emerald-400/50 hover:text-emerald-300 transition-all duration-300"
                 style={{ fontFamily: "var(--font-montserrat)" }}
                 onClick={() => setIsMenuOpen(false)}

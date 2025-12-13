@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { useLocale } from "next-intl";
 import {
   MapPin,
@@ -20,27 +20,19 @@ export default function Footer() {
   const isArabic = locale === "ar";
   const currentYear = new Date().getFullYear();
 
-  // Get locale prefix for links
-  const getLocalePath = (path: string) => {
-    if (locale === "en") {
-      return `/_locales/en${path}`;
-    }
-    return path;
-  };
-
   const quickLinks = [
-    { href: getLocalePath("/"), label: isArabic ? "الرئيسية" : "Home" },
-    { href: getLocalePath("/about-us"), label: isArabic ? "من نحن" : "About Us" },
-    { href: getLocalePath("/healthycure"), label: isArabic ? "هلثي كيور" : "HealthyCure" },
-    { href: getLocalePath("/products/omepure"), label: isArabic ? "منتجاتنا" : "Products" },
-    { href: getLocalePath("/contact-us"), label: isArabic ? "اتصل بنا" : "Contact" },
+    { href: "/", label: isArabic ? "الرئيسية" : "Home" },
+    { href: "/about-us", label: isArabic ? "من نحن" : "About Us" },
+    { href: "/healthycure", label: isArabic ? "هلثي كيور" : "HealthyCure" },
+    { href: "/products/omepure", label: isArabic ? "منتجاتنا" : "Products" },
+    { href: "/contact-us", label: isArabic ? "اتصل بنا" : "Contact" },
   ];
 
   const services = [
-    { href: getLocalePath("/prices"), label: isArabic ? "قائمة الأسعار" : "Price List" },
-    { href: getLocalePath("/certificate"), label: isArabic ? "الشهادات" : "Certificates" },
-    { href: getLocalePath("/our-vision"), label: isArabic ? "رؤيتنا" : "Our Vision" },
-    { href: getLocalePath("/our-mission"), label: isArabic ? "رسالتنا" : "Our Mission" },
+    { href: "/prices", label: isArabic ? "قائمة الأسعار" : "Price List" },
+    { href: "/certificate", label: isArabic ? "الشهادات" : "Certificates" },
+    { href: "/our-vision", label: isArabic ? "رؤيتنا" : "Our Vision" },
+    { href: "/our-mission", label: isArabic ? "رسالتنا" : "Our Mission" },
   ];
 
   const socialLinks = [
@@ -78,7 +70,7 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
             {/* Brand Section */}
             <div className="lg:col-span-1">
-              <Link href={getLocalePath("/")} className="inline-block mb-6">
+              <Link href="/" className="inline-block mb-6">
                 <div className="relative h-12 w-40">
                   <Image
                     src={isArabic ? "/logos/full-logo-ar.webp" : "/logos/full-logo-en.webp"}
@@ -173,7 +165,7 @@ export default function Footer() {
               <ul className="space-y-4">
                 <li>
                   <a
-                    href="https://maps.google.com/?q=14+Sherif+El-Rady+St.,+Old+Tawriel,+Mansoura"
+                    href="https://maps.google.com/?q=17+Sherif+El-Rady+St.,+Old+Tawriel,+Mansoura"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-start gap-3 text-gray-400 hover:text-emerald-400 transition-colors duration-300"
@@ -184,8 +176,8 @@ export default function Footer() {
                       style={{ fontFamily: isArabic ? "var(--font-tajawal)" : "var(--font-inter)" }}
                     >
                       {isArabic
-                        ? "14 شارع شريف الراضي، التوريل القديمة، المنصورة"
-                        : "14 Sherif El-Rady St., Old Tawriel, Mansoura"}
+                        ? "17 شارع شريف الراضي، عمارة هيلثي، توريل القديمة، المنصورة"
+                        : "17 Sherif El-Rady St., Old Tawriel, Mansoura"}
                     </span>
                   </a>
                 </li>
@@ -200,11 +192,11 @@ export default function Footer() {
                 </li>
                 <li>
                   <a
-                    href="mailto:info@healthy-eg.com"
+                    href="mailto:info@healthy.com.eg"
                     className="flex items-center gap-3 text-gray-400 hover:text-emerald-400 transition-colors duration-300"
                   >
                     <Mail className="w-5 h-5 flex-shrink-0 text-emerald-500" />
-                    <span className="text-sm">info@healthy-eg.com</span>
+                    <span className="text-sm">info@healthy.com.eg</span>
                   </a>
                 </li>
               </ul>

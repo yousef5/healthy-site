@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { motion, useInView } from "framer-motion";
 import { useTranslations } from "next-intl";
@@ -23,13 +23,6 @@ export default function HeroSection({
 }: HeroSectionProps) {
   const t = useTranslations("Index");
 
-  // Get locale prefix for links
-  const getLocalePath = (path: string) => {
-    if (!isArabic) {
-      return `/_locales/en${path}`;
-    }
-    return path;
-  };
   const containerRef = useRef<HTMLDivElement>(null);
   const section1Ref = useRef<HTMLDivElement>(null);
   const section3Ref = useRef<HTMLDivElement>(null);
@@ -190,7 +183,7 @@ export default function HeroSection({
               }}
               className="flex justify-center items-center"
             >
-              <Link href={getLocalePath("/contact-us")}>
+              <Link href="/contact-us">
                 <Button
                   size="lg"
                   className={`bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-5 md:px-10 md:py-6 rounded-full transition-all duration-300 shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 hover:scale-105 ${

@@ -14,10 +14,21 @@ const LanguageSwitcher = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [mounted, setMounted] = useState(false);
   const scrollPositionRef = useRef(0);
+  const [currentLocale, setCurrentLocale] = useState(locale);
 
   useEffect(() => {
     setMounted(true);
-  }, []);
+
+    // Detect actual locale from URL for production sites
+    if (typeof window !== 'undefined') {
+      const path = window.location.pathname;
+      const detectedLocale =
+        path.startsWith('/en/') || path.startsWith('/en') ? 'en' :
+        path.startsWith('/ar/') || path.startsWith('/ar') ? 'ar' :
+        locale;
+      setCurrentLocale(detectedLocale);
+    }
+  }, [locale]);
 
   // Restore scroll position after loading completes
   useEffect(() => {
@@ -30,16 +41,19 @@ const LanguageSwitcher = () => {
   }, [isLoading]);
 
   const changeLanguage = (newLocale: string) => {
-    if (newLocale === locale || isPending || isLoading) return;
+    if (isPending || isLoading) return;
+
+    // Don't switch if already on target locale
+    if (newLocale === currentLocale) return;
 
     setIsLoading(true);
+    scrollPositionRef.current = window.scrollY;
 
     // Save to localStorage and cookie
     localStorage.setItem('locale', newLocale);
-    document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000`;
+    document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
 
-    // Check if running on static export (not dev server)
-    // Dev server includes: localhost, 127.0.0.1, and local network IPs (192.168.x.x, 10.x.x.x, 172.16-31.x.x)
+    // Check if we're on a dev server
     const hostname = typeof window !== 'undefined' ? window.location.hostname : '';
     const isDevServer =
       hostname.includes('localhost') ||
@@ -47,32 +61,50 @@ const LanguageSwitcher = () => {
       hostname.startsWith('192.168.') ||
       hostname.startsWith('10.') ||
       /^172\.(1[6-9]|2[0-9]|3[0-1])\./.test(hostname);
-    const isStaticSite = !isDevServer;
 
-    if (isStaticSite) {
-      // Static site - redirect to correct locale path
-      const currentPath = window.location.pathname;
-
-      if (newLocale === 'en') {
-        // Switch to English: go to /_locales/en/ version
-        const newPath = currentPath.startsWith('/_locales/')
-          ? currentPath.replace('/_locales/ar/', '/_locales/en/')
-          : '/_locales/en' + (currentPath === '/' ? '/' : currentPath);
-        window.location.href = newPath;
-      } else {
-        // Switch to Arabic: go to root version (no prefix)
-        const newPath = currentPath.replace('/_locales/en/', '/').replace('/_locales/ar/', '/');
-        window.location.href = newPath;
-      }
-    } else {
+    if (isDevServer) {
       // Dev server - use Next.js router
-      scrollPositionRef.current = window.scrollY;
       startTransition(() => {
         router.replace(pathname, { locale: newLocale as "ar" | "en" });
         setTimeout(() => {
           setIsLoading(false);
         }, 800);
       });
+    } else {
+      // Production static export - navigate to locale-specific directory
+      const currentPath = window.location.pathname;
+      let newPath: string;
+
+      if (newLocale === 'ar') {
+        // Switch to Arabic
+        if (currentPath.startsWith('/en/')) {
+          newPath = currentPath.replace('/en/', '/ar/');
+        } else if (currentPath === '/en') {
+          newPath = '/ar/';
+        } else if (currentPath === '/' || currentPath === '') {
+          newPath = '/ar/';
+        } else {
+          // Path without locale prefix - prepend /ar
+          newPath = '/ar' + currentPath;
+        }
+      } else {
+        // Switch to English
+        if (currentPath.startsWith('/ar/')) {
+          newPath = currentPath.replace('/ar/', '/en/');
+        } else if (currentPath === '/ar') {
+          newPath = '/en/';
+        } else if (currentPath === '/' || currentPath === '') {
+          newPath = '/en/';
+        } else {
+          // Path without locale prefix - prepend /en
+          newPath = '/en' + currentPath;
+        }
+      }
+
+      console.log(`Switching language: ${currentPath} → ${newPath}`);
+
+      // Use location.href for immediate navigation in static export
+      window.location.href = newPath;
     }
   };
 
@@ -139,20 +171,20 @@ const LanguageSwitcher = () => {
               fontWeight: 600,
               fontSize: "1.125rem",
               margin: 0,
-              fontFamily: locale === "ar" ? "var(--font-cairo)" : "var(--font-inter)",
+              fontFamily: currentLocale === "ar" ? "var(--font-cairo)" : "var(--font-inter)",
             }}
           >
-            {locale === "ar" ? "جاري تغيير اللغة..." : "Changing language..."}
+            {currentLocale === "ar" ? "جاري تغيير اللغة..." : "Changing language..."}
           </p>
           <p
             style={{
               color: "#9ca3af",
               fontSize: "0.875rem",
               marginTop: "0.25rem",
-              fontFamily: locale === "ar" ? "var(--font-tajawal)" : "var(--font-inter)",
+              fontFamily: currentLocale === "ar" ? "var(--font-tajawal)" : "var(--font-inter)",
             }}
           >
-            {locale === "ar" ? "يرجى الانتظار" : "Please wait"}
+            {currentLocale === "ar" ? "يرجى الانتظار" : "Please wait"}
           </p>
         </div>
       </div>
@@ -175,7 +207,7 @@ const LanguageSwitcher = () => {
           onClick={() => changeLanguage("ar")}
           disabled={!mounted || isPending || isLoading}
           className={`relative px-3 py-1.5 text-sm font-medium rounded-md transition-all duration-300 disabled:opacity-50 ${
-            locale === "ar"
+            currentLocale === "ar"
               ? "bg-emerald-500 text-white shadow-lg shadow-emerald-500/25"
               : "text-gray-400 hover:text-white hover:bg-gray-800/50"
           }`}
@@ -187,7 +219,7 @@ const LanguageSwitcher = () => {
           onClick={() => changeLanguage("en")}
           disabled={!mounted || isPending || isLoading}
           className={`relative px-3 py-1.5 text-sm font-medium rounded-md transition-all duration-300 disabled:opacity-50 ${
-            locale === "en"
+            currentLocale === "en"
               ? "bg-emerald-500 text-white shadow-lg shadow-emerald-500/25"
               : "text-gray-400 hover:text-white hover:bg-gray-800/50"
           }`}
