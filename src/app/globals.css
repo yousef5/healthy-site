@@ -136,7 +136,8 @@
   html[lang="ar"] a,
   html[lang="ar"] button,
   html[lang="ar"] li {
-    font-family: var(--font-tajawal-bold);
+    font-family: var(--font-tajawal);
+    font-weight: 700;
   }
 
   html:not([lang="ar"]) h1,

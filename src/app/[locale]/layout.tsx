@@ -5,19 +5,19 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Metadata } from "next";
 import { ThemeProvider } from "@/components/theme-provider";
 import { jsonLdScriptProps } from "react-schemaorg";
-import { WebSite } from "schema-dts";
+import { Organization, WebSite } from "schema-dts";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import ScrollToTop from "@/components/ScrollToTop";
 import "../globals.css";
 import {
   cairo,
   tajawal,
-  tajawalLight,
-  tajawalRegular,
-  tajawalBold,
   inter,
   montserrat,
 } from "@/lib/fonts";
+
+const SITE_URL = "https://healthy-eg.com";
 
 export default async function RootLayout({
   children,
@@ -40,10 +40,73 @@ export default async function RootLayout({
   return (
     <html lang={locale} dir={isArabic ? "rtl" : "ltr"} suppressHydrationWarning>
       <head>
-        <link
-          rel="canonical"
-          href={`https://next-app-i18n-starter.vercel.app`}
+        {/* Preconnect to Google Fonts for faster font loading */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+
+        <link rel="canonical" href={SITE_URL} />
+        <link rel="alternate" hrefLang="x-default" href={SITE_URL} />
+        <link rel="alternate" hrefLang="en" href={SITE_URL} />
+        <link rel="alternate" hrefLang="ar" href={SITE_URL} />
+        <meta name="keywords" content={t("keywords")} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content="Healthy Pharma - هلثي فارما" />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <meta name="googlebot" content="index, follow" />
+        <meta name="bingbot" content="index, follow" />
+
+        {/* Favicon */}
+        <link rel="icon" href="/logos/healthycure.webp" />
+        <link rel="apple-touch-icon" href="/logos/healthycure.webp" />
+
+        {/* Organization Schema */}
+        <script
+          {...jsonLdScriptProps<Organization>({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "Healthy Pharma - هلثي فارما",
+            alternateName: ["HealthyCure", "هلثي كيور", "Healthy Cure", "شركة هلثي للصناعات الدوائية"],
+            url: SITE_URL,
+            logo: `${SITE_URL}/logos/healthycure.webp`,
+            description: isArabic
+              ? "شركة هلثي فارما للصناعات الدوائية والطبية - موزع أدوية رائد في مصر"
+              : "Healthy Pharma - Leading pharmaceutical manufacturer and distributor in Egypt",
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "14 Sherif El-Rady St., Old Tawriel",
+              addressLocality: "Mansoura",
+              addressCountry: "Egypt",
+            },
+            contactPoint: {
+              "@type": "ContactPoint",
+              telephone: "+20-50-2338989",
+              contactType: "customer service",
+              availableLanguage: ["Arabic", "English"],
+            },
+            sameAs: [
+              "https://www.facebook.com/HealthyCure2020",
+              "https://www.instagram.com/healthycure_insta/",
+              "https://www.youtube.com/@healthycure105",
+            ],
+          })}
         />
+
+        {/* WebSite Schema */}
+        <script
+          {...jsonLdScriptProps<WebSite>({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: t("title"),
+            description: t("description"),
+            url: SITE_URL,
+            inLanguage: locale,
+            potentialAction: {
+              "@type": "SearchAction",
+              target: `${SITE_URL}/prices/{search_term_string}`,
+            },
+          })}
+        />
+
         <style>
           {`
             :root {
@@ -56,43 +119,9 @@ export default async function RootLayout({
             }
           `}
         </style>
-        <link
-          rel="alternate"
-          hrefLang="x-default"
-          href="https://next-app-i18n-starter.vercel.app"
-        />
-        <link
-          rel="alternate"
-          hrefLang="en"
-          href="https://next-app-i18n-starter.vercel.app/en"
-        />
-        <link
-          rel="alternate"
-          hrefLang="ar"
-          href="https://next-app-i18n-starter.vercel.app/ar"
-        />
-        <meta name="keywords" content={t("keywords")} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <script
-          {...jsonLdScriptProps<WebSite>({
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            name: t("title"),
-            description: t("description"),
-            url: "https://next-app-i18n-starter.vercel.app",
-            inLanguage: locale,
-          })}
-        />
       </head>
       <body
-        className={`
-          ${
-            isArabic
-              ? `${cairo.variable} ${tajawal.variable} ${tajawalLight.variable} ${tajawalRegular.variable} ${tajawalBold.variable}`
-              : `${inter.variable} ${montserrat.variable}`
-          }
-          antialiased
-        `}
+        className={`${cairo.variable} ${tajawal.variable} ${inter.variable} ${montserrat.variable} antialiased`}
         suppressHydrationWarning
       >
         <ThemeProvider
@@ -102,7 +131,10 @@ export default async function RootLayout({
           forcedTheme="dark"
           disableTransitionOnChange
         >
-          <NextIntlClientProvider>{children}</NextIntlClientProvider>
+          <NextIntlClientProvider>
+            {children}
+            <ScrollToTop />
+          </NextIntlClientProvider>
         </ThemeProvider>
         <Analytics />
         <SpeedInsights />
@@ -120,44 +152,52 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Metadata" });
 
   return {
-    title: t("title"),
+    title: {
+      default: t("title"),
+      template: `%s | Healthy Pharma - هلثي فارما`,
+    },
     description: t("description"),
     keywords: t("keywords"),
+    authors: [{ name: "Healthy Pharma", url: SITE_URL }],
+    creator: "Healthy Pharma - هلثي فارما",
+    publisher: "Healthy Pharma",
     other: {
       "google-site-verification": "sVYBYfSJfXdBca3QoqsZtD6lsWVH6sk02RCH4YAbcm8",
     },
     openGraph: {
       title: t("title"),
       description: t("description"),
-      url: `https://next-app-i18n-starter.vercel.app`,
-      siteName: t("title"),
+      url: SITE_URL,
+      siteName: "Healthy Pharma - هلثي فارما - HealthyCure",
       images: [
         {
-          url: "https://next-app-i18n-starter.vercel.app/og-image.png",
-          width: 1200,
-          height: 630,
+          url: `${SITE_URL}/logos/healthycure.webp`,
+          width: 800,
+          height: 600,
+          alt: "Healthy Pharma - HealthyCure Logo",
         },
       ],
-      locale: locale,
+      locale: locale === "ar" ? "ar_EG" : "en_US",
       type: "website",
     },
     twitter: {
       card: "summary_large_image",
       title: t("title"),
       description: t("description"),
-      images: ["https://next-app-i18n-starter.vercel.app/og-image.png"],
+      images: [`${SITE_URL}/logos/healthycure.webp`],
+      creator: "@HealthyCure1",
     },
     alternates: {
-      canonical: `https://next-app-i18n-starter.vercel.app`,
+      canonical: SITE_URL,
       languages: {
-        en: "https://next-app-i18n-starter.vercel.app/en",
-        ar: "https://next-app-i18n-starter.vercel.app/ar",
+        en: SITE_URL,
+        ar: SITE_URL,
       },
     },
     robots: {
@@ -171,5 +211,6 @@ export async function generateMetadata({
         "max-snippet": -1,
       },
     },
+    category: "pharmaceutical",
   };
 }

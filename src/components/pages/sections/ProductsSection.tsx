@@ -22,43 +22,59 @@ export const ProductsSection = ({
     setIsDarkMode(resolvedTheme === "dark");
   }, [resolvedTheme]);
 
-  // Example product data with custom image sizes
+  // Get locale prefix for links
+  const getLocalePath = (path: string) => {
+    if (!isArabic) {
+      return `/_locales/en${path}`;
+    }
+    return path;
+  };
+
+  // Product data with prices in EGP
   const products = [
     {
       id: 1,
-      name: isArabic ? "اوميبيور نقط " : "Omepure drops",
+      name: isArabic ? "اوميبيور نقط" : "Omepure Drops",
       image: "/products/main/omepure.png",
-      alt: isArabic ? "اوميبيور نقط " : "Omepure drops",
+      alt: isArabic ? "اوميبيور نقط" : "Omepure Drops",
       imageWidth: 420,
       imageHeight: 420,
-      url: "/products/omepure",
+      url: getLocalePath("/products/omepure"),
+      price: "75",
+      details: isArabic ? "نقط" : "Drops",
     },
     {
       id: 2,
-      name: isArabic ? "جيرميتين نقط" : "Germitin drops",
-      image: "/products/main/germeten.png",
-      alt: isArabic ? "جيرميتين نقط" : "Germitine drops",
-      imageWidth: 300,
-      imageHeight: 300,
-      url: "/products/germitin",
+      name: isArabic ? "الفا مور" : "AlfaMore",
+      image: "/products/main/alfamore.png",
+      alt: isArabic ? "الفا مور اكياس" : "AlfaMore Bags",
+      imageWidth: 480,
+      imageHeight: 480,
+      url: getLocalePath("/products/alfamore"),
+      price: "89",
+      details: isArabic ? "15 كيس" : "15 Bags",
     },
     {
       id: 3,
-      name: isArabic ? "الفا مور اكياس" : "AlfaMore bags",
-      image: "/products/main/alfamore.png",
-      alt: isArabic ? "الفا مور اكياس" : "AlfaMore bags",
-      imageWidth: 480,
-      imageHeight: 480,
-      url: "/products/alfamore",
+      name: isArabic ? "الفا فريش" : "AlfaFresh",
+      image: "/products/main/alfafresh.png",
+      alt: isArabic ? "الفا فريش اكياس" : "AlfaFresh Bags",
+      imageWidth: 440,
+      imageHeight: 440,
+      url: getLocalePath("/products/alfafresh"),
+      price: "40",
+      details: isArabic ? "15 كيس" : "15 Bags",
     },
     {
       id: 4,
-      name: isArabic ? "الفا فريش اكياس" : "AlfaFresh bags",
-      image: "/products/main/alfafresh.png",
-      alt: isArabic ? "الفا فريش اكياس" : "AlfaFresh bags",
-      imageWidth: 440,
-      imageHeight: 440,
-      url: "/products/alfafresh",
+      name: isArabic ? "جيرميتين نقط" : "Germitin Drops",
+      image: "/products/main/germeten.png",
+      alt: isArabic ? "جيرميتين نقط" : "Germitin Drops",
+      imageWidth: 300,
+      imageHeight: 300,
+      url: getLocalePath("/products/germitin"),
+      price: "57",
+      details: isArabic ? "نقط" : "Drops",
     },
   ];
 
@@ -212,14 +228,15 @@ export const ProductsSection = ({
                   productName={product.name}
                   imageSrc={product.image}
                   altText={product.alt}
-                  ownerName="Healthy Pharma"
-                  username="@healthypharma"
-                  lastSoldPrice="12.50"
-                  currency="USD"
+                  ownerName="HealthyCure"
+                  username={product.details}
+                  lastSoldPrice={product.price}
+                  currency={isArabic ? "ج.م" : "EGP"}
                   isDarkMode={isDarkMode}
                   imageWidth={product.imageWidth}
                   imageHeight={product.imageHeight}
                   url={product.url}
+                  isArabic={isArabic}
                 />
               </motion.div>
             ))}

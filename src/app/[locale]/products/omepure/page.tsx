@@ -1,7 +1,7 @@
 "use client";
 
 import { OmepureProductSection } from "@/components/pages/sections/OmepureProductSection";
-import { Navbar } from "@/components/Navbar";
+import { HealthyCureNavbar } from "@/components/HealthyCureNavbar";
 import { useParams } from "next/navigation";
 import { useState, useEffect } from "react";
 
@@ -21,7 +21,7 @@ export default function OmepurePage() {
 
   return (
     <>
-      <Navbar />
+      <HealthyCureNavbar />
       <main className="min-h-screen" dir={isArabic ? "rtl" : "ltr"}>
         <OmepureChildrenHero isArabic={isArabic} />
         <OmepureProductSection isArabic={isArabic} />

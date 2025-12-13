@@ -15,6 +15,7 @@ interface ProductCardProps {
   imageWidth?: number;
   imageHeight?: number;
   url?: string;
+  isArabic?: boolean;
 }
 
 export const ProductCard = ({
@@ -25,11 +26,12 @@ export const ProductCard = ({
   ownerImage,
   username,
   lastSoldPrice,
-  currency = "ETH",
+  currency = "EGP",
   isDarkMode = false,
   imageWidth = 400, // Default extra large size
   imageHeight = 400, // Default extra large size
   url,
+  isArabic = false,
 }: ProductCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -136,15 +138,15 @@ export const ProductCard = ({
           className={`border-t ${cardBorder} pt-3 flex justify-between items-center`}
         >
           <div>
-            <span className={`text-xs ${captionText}`}>Last Sold for</span>
-            <p className={`text-lg font-medium ${priceText}`}>
-              {lastSoldPrice || "0.00"} {currency}
+            <span className={`text-xs ${captionText}`}>{isArabic ? "السعر" : "Price"}</span>
+            <p className={`text-lg font-bold ${priceText}`}>
+              {lastSoldPrice || "0"} {currency}
             </p>
           </div>
 
           {ownerName && (
             <div className="text-right">
-              <span className={`text-xs ${captionText}`}>Owned By</span>
+              <span className={`text-xs ${captionText}`}>{isArabic ? "العلامة التجارية" : "Brand"}</span>
               <div className="flex items-center justify-end mt-1">
                 {ownerImage && (
                   <div className="relative w-6 h-6 mr-1">
@@ -156,7 +158,7 @@ export const ProductCard = ({
                     />
                   </div>
                 )}
-                <span className={`text-sm ${ownerText}`}>{ownerName}</span>
+                <span className={`text-sm font-semibold ${ownerText}`}>{ownerName}</span>
               </div>
             </div>
           )}

@@ -1,69 +1,33 @@
-import localFont from "next/font/local";
-import { Montserrat } from "next/font/google";
+import { Inter, Cairo, Tajawal, Montserrat } from "next/font/google";
 
-// Arabic fonts
-export const cairo = localFont({
-  src: "../../public/fonts/cairo.ttf",
-  variable: "--font-cairo",
-  display: "swap",
-});
-
-// Individual Tajawal variants
-export const tajawalLight = localFont({
-  src: "../../public/fonts/Tajawal-Light.ttf",
-  variable: "--font-tajawal-light",
-  weight: "300",
-  display: "swap",
-});
-
-export const tajawalRegular = localFont({
-  src: "../../public/fonts/Tajawal-Regular.ttf", // Make sure this file exists
-  variable: "--font-tajawal-regular",
-  weight: "400",
-  display: "swap",
-});
-
-export const tajawalBold = localFont({
-  src: "../../public/fonts/Tajawal-Bold.ttf",
-  variable: "--font-tajawal-bold",
-  weight: "700",
-  display: "swap",
-});
-
-// Combined Tajawal font for CSS variables
-export const tajawal = localFont({
-  src: [
-    {
-      path: "../../public/fonts/Tajawal-Light.ttf",
-      weight: "300",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/Tajawal-Regular.ttf", // Make sure this file exists
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/Tajawal-Bold.ttf",
-      weight: "700",
-      style: "normal",
-    },
-  ],
-  variable: "--font-tajawal",
-  display: "swap",
-});
-
-// English fonts
-export const inter = localFont({
-  src: "../../public/fonts/inter.ttf",
+// English font - Inter with minimal weights
+export const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "600"],
   variable: "--font-inter",
   display: "swap",
 });
 
-// Google Font - Montserrat
+// Arabic fonts - Cairo for headings only
+export const cairo = Cairo({
+  subsets: ["arabic"],
+  weight: ["700"],
+  variable: "--font-cairo",
+  display: "swap",
+});
+
+// Tajawal - single weight for body text
+export const tajawal = Tajawal({
+  subsets: ["arabic"],
+  weight: ["700"],
+  variable: "--font-tajawal",
+  display: "swap",
+});
+
+// Montserrat for English headings
 export const montserrat = Montserrat({
   subsets: ["latin"],
-  weight: ["800", "900"],
+  weight: ["800"],
   variable: "--font-montserrat",
   display: "swap",
 });

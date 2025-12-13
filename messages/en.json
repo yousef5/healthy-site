@@ -34,6 +34,7 @@
     "heroDescription": "We are a fully integrated pharmaceutical entity, covering all of Egypt through a robust distribution network of over 6,000 pharmacies, 450 employees, and 59 vehicles.",
     "heroTagline": "Your health is our responsibility.",
     "getStartedButton": "Explore Our Products",
+    "contactUsButton": "Contact Us",
     "learnMoreButton": "Contact Us",
     "statsPatients": "Pharmacies",
     "statsProducts": "Employees",
@@ -46,7 +47,9 @@
     "featureTitle3": "Fast Delivery",
     "featureDesc3": "Get your medications delivered quickly to your doorstep",
     "ourCustomers": "Our Valued Customers",
-    "customersDescription": "Trusted pharmacies across Egypt that rely on us to deliver high-quality pharmaceutical products and exceptional service."
+    "customersDescription": "Trusted pharmacies across Egypt that rely on us to deliver high-quality pharmaceutical products and exceptional service.",
+    "ourSuppliers": "Our Valued Suppliers",
+    "suppliersDescription": "Leading pharmaceutical companies that partner with us to provide high-quality products to serve our customers better."
   },
 
   "Navbar": {
@@ -79,9 +82,9 @@
     "followUs": "Follow Us"
   },
   "Metadata": {
-    "title": "Healthy Pharmaceutical & Medical Industries",
-    "description": "Healthy Pharmaceutical & Medical Industries",
-    "keywords": "Healthy Pharmaceutical & Medical Industries"
+    "title": "Healthy Pharma | HealthyCure - Pharmaceutical Company Egypt",
+    "description": "Healthy Pharma - Leading pharmaceutical manufacturer and distributor in Egypt. HealthyCure products: Omepure, Germitin, AlfaMore, AlfaFresh, AlfaDrink, Choclocal, Irovit. Omega-3, vitamins, supplements. 6000+ pharmacies network.",
+    "keywords": "Healthy Pharma, HealthyCure, Healthy Cure, Omepure, Germitin, AlfaMore, AlfaFresh, AlfaDrink, Choclocal, Irovit, pharmaceutical company Egypt, drug distributor, pharmaceutical manufacturer, dietary supplements, omega-3, vitamins, Egyptian pharmacies, Mansoura, هلثي فارما, هلثي كيور, أوميبيور, جيرميتين"
   },
   "HealthyCure": {
     "heroTitle": "Healthy Cure",

@@ -1,7 +1,7 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { Navbar } from "@/components/Navbar";
+import { HealthyCureNavbar } from "@/components/HealthyCureNavbar";
 import HealthyCureHeroSection from "@/components/pages/sections/HealthyCureHeroSection";
 import { ProductsSection } from "@/components/pages/sections/ProductsSection";
 import { useEffect, useState } from "react";
@@ -31,25 +31,25 @@ export default function HealthyCureIndex() {
     fontWeight: isArabic ? 400 : 400,
   };
 
-  // Specific font styles for Tajawal variants
+  // Specific font styles for Tajawal variants (using single tajawal font)
   const tajawalLightStyle = {
-    fontFamily: "var(--font-tajawal-light)",
+    fontFamily: "var(--font-tajawal)",
     fontWeight: 300,
   };
 
   const tajawalRegularStyle = {
-    fontFamily: "var(--font-tajawal-regular)",
+    fontFamily: "var(--font-tajawal)",
     fontWeight: 400,
   };
 
   const tajawalBoldStyle = {
-    fontFamily: "var(--font-tajawal-bold)",
+    fontFamily: "var(--font-tajawal)",
     fontWeight: 700,
   };
 
   return (
     <>
-      <Navbar />
+      <HealthyCureNavbar />
       <main
         className="flex flex-col items-center"
         dir={isArabic ? "rtl" : "ltr"}
@@ -65,10 +65,12 @@ export default function HealthyCureIndex() {
         />
 
         {/* Products Section */}
-        <ProductsSection
-          isArabic={isArabic}
-          headingFontStyle={headingFontStyle}
-        />
+        <div id="products-section" className="w-full">
+          <ProductsSection
+            isArabic={isArabic}
+            headingFontStyle={headingFontStyle}
+          />
+        </div>
       </main>
       <Footer />
     </>

@@ -64,20 +64,6 @@ export const OmepureChildrenHero = ({
 
   const direction = isArabic ? "rtl" : "ltr";
 
-  // Floating animation for child elements
-  const floatingAnimation = {
-    initial: { opacity: 0, y: 10 },
-    animate: {
-      opacity: 1,
-      y: [0, -8, 0],
-      transition: {
-        duration: 3,
-        repeat: Infinity,
-        repeatType: "reverse" as const,
-      },
-    },
-  };
-
   return (
     <section
       id="omepure-hero-section"
@@ -160,7 +146,7 @@ export const OmepureChildrenHero = ({
       <div className="container mx-auto px-4 relative z-10 py-16 md:py-8">
         <div
           className={`flex flex-col-reverse ${
-            isArabic ? "lg:flex-row-reverse" : "lg:flex-row"
+            isArabic ? "lg:flex-row" : "lg:flex-row"
           } items-center justify-between gap-8 lg:gap-12`}
         >
           {/* Left Side - Text Content */}
@@ -233,8 +219,28 @@ export const OmepureChildrenHero = ({
                   : "Help your child unlock their full potential with Omepure. Our formula with Omega 3,6,9 and Vitamin E supports mental growth and memory enhancement."}
               </p>
 
-              {/* Call to Action Buttons */}
-              <div className="flex flex-wrap gap-4 mb-10">
+              {/* Price and CTA Section */}
+              <div className="flex flex-wrap items-center gap-6 mb-10">
+                {/* Price Badge */}
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-amber-400 to-orange-500 rounded-2xl blur-lg opacity-50" />
+                  <div className={`relative px-6 py-4 rounded-2xl ${
+                    isDarkMode
+                      ? "bg-gradient-to-br from-amber-500/20 to-orange-600/20 border border-amber-500/30"
+                      : "bg-gradient-to-br from-amber-50 to-orange-100 border border-amber-300"
+                  }`}>
+                    <span className={`block text-sm ${isDarkMode ? "text-amber-300" : "text-amber-700"}`}>
+                      {isArabic ? "السعر" : "Price"}
+                    </span>
+                    <span className={`block text-3xl md:text-4xl font-black ${
+                      isDarkMode ? "text-amber-400" : "text-amber-600"
+                    }`}>
+                      75 <span className="text-lg font-medium">{isArabic ? "جنيه" : "EGP"}</span>
+                    </span>
+                  </div>
+                </div>
+
+                {/* CTA Button */}
                 <Button
                   size="lg"
                   variant="outline"
@@ -304,59 +310,89 @@ export const OmepureChildrenHero = ({
 
           {/* Right Side - Visuals */}
           <div className="w-full lg:w-1/2 flex justify-center items-center">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="relative"
-            >
-              {/* Price Display - Absolute positioned */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="absolute top-0 right-20 z-30 w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24"
-              >
-                <div className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-full w-full h-full shadow-xl dark:shadow-cyan-900/20 border border-white/20 dark:border-cyan-500/20 flex items-center justify-center p-1">
-                  <div className="text-center">
-                    <span className="text-sm md:text-base lg:text-lg font-bold bg-gradient-to-r from-blue-600 to-purple-500 dark:from-cyan-300 dark:to-blue-300 bg-clip-text text-transparent">
-                      75 جنيه
-                    </span>
-                    <p className="text-[6px] md:text-[7px] text-muted-foreground dark:text-cyan-200/70 mt-0.5">
-                      {isArabic ? "شامل الضريبة" : "Incl. tax"}
-                    </p>
+            <div className="relative">
+              {/* Main Image Card */}
+              <div className="relative group">
+                {/* Outer glow */}
+                <div className={`absolute -inset-1 rounded-3xl blur-xl opacity-75 group-hover:opacity-100 transition-opacity duration-500 ${
+                  isDarkMode
+                    ? "bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600"
+                    : "bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500"
+                }`} />
+
+                {/* Card container */}
+                <div className={`relative rounded-3xl p-1 ${
+                  isDarkMode
+                    ? "bg-gradient-to-br from-cyan-500 via-blue-600 to-purple-700"
+                    : "bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500"
+                }`}>
+                  {/* Inner card */}
+                  <div className={`relative rounded-[22px] overflow-hidden ${
+                    isDarkMode ? "bg-slate-900" : "bg-white"
+                  }`}>
+                    {/* Decorative corner accents */}
+                    <div className={`absolute top-0 left-0 w-20 h-20 ${
+                      isDarkMode
+                        ? "bg-gradient-to-br from-cyan-500/20 to-transparent"
+                        : "bg-gradient-to-br from-blue-500/20 to-transparent"
+                    }`} />
+                    <div className={`absolute bottom-0 right-0 w-20 h-20 ${
+                      isDarkMode
+                        ? "bg-gradient-to-tl from-purple-500/20 to-transparent"
+                        : "bg-gradient-to-tl from-pink-500/20 to-transparent"
+                    }`} />
+
+                    {/* Image - Responsive frame - Large scale */}
+                    <div className={`relative ${
+                      isArabic
+                        ? "w-[420px] h-[420px] md:w-[580px] md:h-[580px] lg:w-[700px] lg:h-[700px]"
+                        : "w-[420px] h-[340px] md:w-[600px] md:h-[480px] lg:w-[750px] lg:h-[600px]"
+                    }`}>
+                      <Image
+                        src={isArabic ? "/products/ome7.jpg" : "/products/main/omepure.png"}
+                        alt={isArabic ? "أوميبيور نقط" : "Omepure Drops"}
+                        fill
+                        className="object-contain p-2"
+                        priority
+                      />
+                    </div>
+
+                    {/* Bottom gradient overlay */}
+                    <div className={`absolute bottom-0 left-0 right-0 h-24 ${
+                      isDarkMode
+                        ? "bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent"
+                        : "bg-gradient-to-t from-white via-white/80 to-transparent"
+                    }`} />
+
+                    {/* Product name badge */}
+                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
+                      <div className={`px-6 py-2 rounded-full backdrop-blur-md ${
+                        isDarkMode
+                          ? "bg-gradient-to-r from-cyan-500/20 to-purple-500/20 border border-cyan-500/30"
+                          : "bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20"
+                      }`}>
+                        <span className={`font-bold text-sm md:text-base ${
+                          isDarkMode ? "text-cyan-300" : "text-blue-600"
+                        }`}>
+                          {isArabic ? "أوميبيور نقط" : "Omepure Drops"}
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </motion.div>
 
-              <div className="relative w-[480px] h-[350px] md:w-[800px] md:h-[calc(100vh-200px)] flex items-center justify-center">
-                {/* Glowing background effect */}
-                <div
-                  className={`absolute inset-0 rounded-full blur-3xl ${
-                    isDarkMode
-                      ? "bg-gradient-to-r from-cyan-500/15 via-blue-500/10 to-purple-500/15"
-                      : "bg-gradient-to-r from-blue-300/20 to-purple-300/20"
-                  }`}
-                />
-
-                {/* Child image */}
-                <motion.div
-                  variants={floatingAnimation}
-                  initial="initial"
-                  animate="animate"
-                  className="absolute top-0 z-10"
-                >
-                  <Image
-                    src="/products/main/omepure.png"
-                    alt="Happy child with Omepure"
-                    width={1200}
-                    height={1200}
-                    className="object-contain drop-shadow-lg"
-                    priority
-                  />
-                </motion.div>
+                {/* Floating decorative elements */}
+                <div className={`absolute -top-6 -left-6 w-12 h-12 rounded-full ${
+                  isDarkMode ? "bg-cyan-500/30" : "bg-blue-500/30"
+                } blur-md`} />
+                <div className={`absolute -bottom-4 -right-8 w-16 h-16 rounded-full ${
+                  isDarkMode ? "bg-purple-500/30" : "bg-pink-500/30"
+                } blur-md`} />
+                <div className={`absolute top-1/2 -right-10 w-8 h-8 rounded-full ${
+                  isDarkMode ? "bg-blue-500/40" : "bg-purple-500/40"
+                } blur-sm`} />
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>
