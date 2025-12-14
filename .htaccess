@@ -25,9 +25,9 @@ RewriteRule ^prices/choclocal15/?$ /en/prices/choclocal15/ [R=301,L,NC]
 RewriteRule ^prices/alphamore15/?$ /en/prices/alphamore15/ [R=301,L,NC]
 RewriteRule ^prices/irovit15/?$ /en/prices/irovit15/ [R=301,L,NC]
 RewriteRule ^prices/alphafresh15/?$ /en/prices/alphafresh15/ [R=301,L,NC]
-RewriteRule ^prices/Jaufree10ml/?$ /en/prices/Jaufree10ml/ [R=301,L,NC]
+RewriteRule ^prices/jaufree10ml/?$ /en/prices/jaufree10ml/ [R=301,L,NC]
 
-# Case variations - redirect uppercase to lowercase for all products (except Jaufree which uses capital J)
+# Case variations - redirect to lowercase for all products
 RewriteRule ^(en|ar)/prices/Omepure10ml/?$ /$1/prices/omepure10ml/ [R=301,L,NC]
 RewriteRule ^(en|ar)/prices/Germeten10ml/?$ /$1/prices/germeten10ml/ [R=301,L,NC]
 RewriteRule ^(en|ar)/prices/Alphadrink12/?$ /$1/prices/alphadrink12/ [R=301,L,NC]
@@ -35,6 +35,7 @@ RewriteRule ^(en|ar)/prices/Choclocal15/?$ /$1/prices/choclocal15/ [R=301,L,NC]
 RewriteRule ^(en|ar)/prices/Alphamore15/?$ /$1/prices/alphamore15/ [R=301,L,NC]
 RewriteRule ^(en|ar)/prices/Irovit15/?$ /$1/prices/irovit15/ [R=301,L,NC]
 RewriteRule ^(en|ar)/prices/Alphafresh15/?$ /$1/prices/alphafresh15/ [R=301,L,NC]
+RewriteRule ^(en|ar)/prices/Jaufree10ml/?$ /$1/prices/jaufree10ml/ [R=301,L,NC]
 RewriteRule ^(en|ar)/prices/OMEPURE10ML/?$ /$1/prices/omepure10ml/ [R=301,L,NC]
 RewriteRule ^(en|ar)/prices/GERMETEN10ML/?$ /$1/prices/germeten10ml/ [R=301,L,NC]
 RewriteRule ^(en|ar)/prices/ALPHADRINK12/?$ /$1/prices/alphadrink12/ [R=301,L,NC]
@@ -42,8 +43,7 @@ RewriteRule ^(en|ar)/prices/CHOCLOCAL15/?$ /$1/prices/choclocal15/ [R=301,L,NC]
 RewriteRule ^(en|ar)/prices/ALPHAMORE15/?$ /$1/prices/alphamore15/ [R=301,L,NC]
 RewriteRule ^(en|ar)/prices/IROVIT15/?$ /$1/prices/irovit15/ [R=301,L,NC]
 RewriteRule ^(en|ar)/prices/ALPHAFRESH15/?$ /$1/prices/alphafresh15/ [R=301,L,NC]
-RewriteRule ^(en|ar)/prices/jaufree10ml/?$ /$1/prices/Jaufree10ml/ [R=301,L,NC]
-RewriteRule ^(en|ar)/prices/JAUFREE10ML/?$ /$1/prices/Jaufree10ml/ [R=301,L,NC]
+RewriteRule ^(en|ar)/prices/JAUFREE10ML/?$ /$1/prices/jaufree10ml/ [R=301,L,NC]
 
 # ============================================
 # Serve index.html for directory requests
