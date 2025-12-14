@@ -17,7 +17,7 @@ RewriteBase /
 # Case-Insensitive Product URL Redirects
 # ============================================
 
-# Without locale prefix → redirect to /en/
+# Without locale prefix → redirect to /en/ (case-insensitive for convenience)
 RewriteRule ^prices/omepure10ml/?$ /en/prices/omepure10ml/ [R=301,L,NC]
 RewriteRule ^prices/germeten10ml/?$ /en/prices/germeten10ml/ [R=301,L,NC]
 RewriteRule ^prices/alphadrink12/?$ /en/prices/alphadrink12/ [R=301,L,NC]
@@ -27,23 +27,23 @@ RewriteRule ^prices/irovit15/?$ /en/prices/irovit15/ [R=301,L,NC]
 RewriteRule ^prices/alphafresh15/?$ /en/prices/alphafresh15/ [R=301,L,NC]
 RewriteRule ^prices/jaufree10ml/?$ /en/prices/jaufree10ml/ [R=301,L,NC]
 
-# Case variations - redirect to lowercase for all products
-RewriteRule ^(en|ar)/prices/Omepure10ml/?$ /$1/prices/omepure10ml/ [R=301,L,NC]
-RewriteRule ^(en|ar)/prices/Germeten10ml/?$ /$1/prices/germeten10ml/ [R=301,L,NC]
-RewriteRule ^(en|ar)/prices/Alphadrink12/?$ /$1/prices/alphadrink12/ [R=301,L,NC]
-RewriteRule ^(en|ar)/prices/Choclocal15/?$ /$1/prices/choclocal15/ [R=301,L,NC]
-RewriteRule ^(en|ar)/prices/Alphamore15/?$ /$1/prices/alphamore15/ [R=301,L,NC]
-RewriteRule ^(en|ar)/prices/Irovit15/?$ /$1/prices/irovit15/ [R=301,L,NC]
-RewriteRule ^(en|ar)/prices/Alphafresh15/?$ /$1/prices/alphafresh15/ [R=301,L,NC]
-RewriteRule ^(en|ar)/prices/Jaufree10ml/?$ /$1/prices/jaufree10ml/ [R=301,L,NC]
-RewriteRule ^(en|ar)/prices/OMEPURE10ML/?$ /$1/prices/omepure10ml/ [R=301,L,NC]
-RewriteRule ^(en|ar)/prices/GERMETEN10ML/?$ /$1/prices/germeten10ml/ [R=301,L,NC]
-RewriteRule ^(en|ar)/prices/ALPHADRINK12/?$ /$1/prices/alphadrink12/ [R=301,L,NC]
-RewriteRule ^(en|ar)/prices/CHOCLOCAL15/?$ /$1/prices/choclocal15/ [R=301,L,NC]
-RewriteRule ^(en|ar)/prices/ALPHAMORE15/?$ /$1/prices/alphamore15/ [R=301,L,NC]
-RewriteRule ^(en|ar)/prices/IROVIT15/?$ /$1/prices/irovit15/ [R=301,L,NC]
-RewriteRule ^(en|ar)/prices/ALPHAFRESH15/?$ /$1/prices/alphafresh15/ [R=301,L,NC]
-RewriteRule ^(en|ar)/prices/JAUFREE10ML/?$ /$1/prices/jaufree10ml/ [R=301,L,NC]
+# Case variations - redirect to lowercase (NO NC flag to avoid loops!)
+RewriteRule ^(en|ar)/prices/Omepure10ml/?$ /$1/prices/omepure10ml/ [R=301,L]
+RewriteRule ^(en|ar)/prices/Germeten10ml/?$ /$1/prices/germeten10ml/ [R=301,L]
+RewriteRule ^(en|ar)/prices/Alphadrink12/?$ /$1/prices/alphadrink12/ [R=301,L]
+RewriteRule ^(en|ar)/prices/Choclocal15/?$ /$1/prices/choclocal15/ [R=301,L]
+RewriteRule ^(en|ar)/prices/Alphamore15/?$ /$1/prices/alphamore15/ [R=301,L]
+RewriteRule ^(en|ar)/prices/Irovit15/?$ /$1/prices/irovit15/ [R=301,L]
+RewriteRule ^(en|ar)/prices/Alphafresh15/?$ /$1/prices/alphafresh15/ [R=301,L]
+RewriteRule ^(en|ar)/prices/Jaufree10ml/?$ /$1/prices/jaufree10ml/ [R=301,L]
+RewriteRule ^(en|ar)/prices/OMEPURE10ML/?$ /$1/prices/omepure10ml/ [R=301,L]
+RewriteRule ^(en|ar)/prices/GERMETEN10ML/?$ /$1/prices/germeten10ml/ [R=301,L]
+RewriteRule ^(en|ar)/prices/ALPHADRINK12/?$ /$1/prices/alphadrink12/ [R=301,L]
+RewriteRule ^(en|ar)/prices/CHOCLOCAL15/?$ /$1/prices/choclocal15/ [R=301,L]
+RewriteRule ^(en|ar)/prices/ALPHAMORE15/?$ /$1/prices/alphamore15/ [R=301,L]
+RewriteRule ^(en|ar)/prices/IROVIT15/?$ /$1/prices/irovit15/ [R=301,L]
+RewriteRule ^(en|ar)/prices/ALPHAFRESH15/?$ /$1/prices/alphafresh15/ [R=301,L]
+RewriteRule ^(en|ar)/prices/JAUFREE10ML/?$ /$1/prices/jaufree10ml/ [R=301,L]
 
 # ============================================
 # Serve index.html for directory requests
