@@ -10,6 +10,6 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
       },
     ],
-    sitemap: 'https://healthy-eg.com/sitemap.xml',
+    sitemap: 'https://healthy.com.eg/sitemap.xml',
   };
 }

@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import PricesProductPage from "./PricesProductPage";
 
-const SITE_URL = "https://healthy-eg.com";
+const SITE_URL = "https://healthy.com.eg";
 
 type ProductSEO = {
   path: string;

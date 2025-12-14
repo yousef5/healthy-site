@@ -17,7 +17,7 @@ import {
   montserrat,
 } from "@/lib/fonts";
 
-const SITE_URL = "https://healthy-eg.com";
+const SITE_URL = "https://healthy.com.eg";
 
 export default async function RootLayout({
   children,

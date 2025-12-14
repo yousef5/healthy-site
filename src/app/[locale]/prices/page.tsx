@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import PricesIndexPage from "./PricesIndexPage";
 
-const SITE_URL = "https://healthy-eg.com";
+const SITE_URL = "https://healthy.com.eg";
 
 export async function generateMetadata({
   params,

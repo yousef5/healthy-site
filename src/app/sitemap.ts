@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 
 export const dynamic = "force-static";
 
-const SITE_URL = "https://healthy-eg.com";
+const SITE_URL = "https://healthy.com.eg";
 
 // Product paths for SEO
 const productPaths = [
@@ -13,6 +13,7 @@ const productPaths = [
   "alphamore15",
   "irovit15",
   "alphafresh15",
+  "jaufree10ml",
 ];
 
 // Static pages
