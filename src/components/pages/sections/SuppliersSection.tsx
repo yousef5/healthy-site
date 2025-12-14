@@ -88,7 +88,7 @@ export default function SuppliersSection({
   ];
 
   return (
-    <section className="w-full py-24 md:py-32 bg-white relative overflow-hidden">
+    <section id="suppliers-section" className="w-full py-24 md:py-32 bg-white relative overflow-hidden">
       {/* Subtle Grid Pattern */}
       <div className="absolute inset-0 opacity-[0.03]" style={{
         backgroundImage: 'radial-gradient(circle, #10b981 1px, transparent 1px)',

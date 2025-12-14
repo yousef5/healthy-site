@@ -4,7 +4,7 @@ import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { motion, useInView } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { Heart, TrendingUp, Users, Shield } from "lucide-react";
+import { Heart, TrendingUp, Users, Shield, ChevronDown } from "lucide-react";
 import { useRef } from "react";
 
 interface HeroSectionProps {
@@ -61,7 +61,64 @@ export default function HeroSection({
   return (
     <div ref={containerRef} className="relative bg-black">
       {/* SECTION 1: HERO - APPLE STYLE */}
-      <section className="relative w-full overflow-hidden bg-black pb-0">
+      <section
+        id="hero-section"
+        className="relative w-full min-h-screen overflow-hidden bg-black"
+        aria-label={isArabic ? "القسم الرئيسي - هلثي فارما" : "Hero Section - Healthy Pharma"}
+        itemScope
+        itemType="https://schema.org/Organization"
+      >
+        {/* Hidden SEO content for search engines */}
+        <meta itemProp="name" content="Healthy Pharma" />
+        <meta itemProp="description" content={isArabic ? "هلثي فارما للصناعات الدوائية والطبية - أكبر شبكة توزيع أدوية في مصر" : "Healthy Pharma - Leading pharmaceutical distribution network in Egypt"} />
+        <meta itemProp="url" content="https://healthypharma.com" />
+        <meta itemProp="logo" content="https://healthypharma.com/logos/logo.png" />
+        <meta itemProp="image" content="https://healthypharma.com/images/hero-main.jpg" />
+
+        {/* JSON-LD Structured Data for SEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Healthy Pharma",
+              "alternateName": "هلثي فارما",
+              "url": "https://healthypharma.com",
+              "logo": "https://healthypharma.com/logos/logo.png",
+              "description": isArabic
+                ? "هلثي فارما للصناعات الدوائية والطبية - أكبر شبكة توزيع أدوية في مصر تغطي 27 محافظة"
+                : "Healthy Pharma - Egypt's leading pharmaceutical distribution company covering 27 governorates with 15+ years of excellence",
+              "foundingDate": "2009",
+              "numberOfEmployees": {
+                "@type": "QuantitativeValue",
+                "value": "450+"
+              },
+              "areaServed": {
+                "@type": "Country",
+                "name": "Egypt"
+              },
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Mansoura",
+                "addressRegion": "Dakahlia",
+                "addressCountry": "EG"
+              },
+              "sameAs": [
+                "https://facebook.com/healthypharma",
+                "https://linkedin.com/company/healthypharma"
+              ],
+              "knowsAbout": [
+                "Pharmaceutical Distribution",
+                "Medical Products",
+                "Healthcare Supply Chain",
+                "توزيع الأدوية",
+                "المنتجات الطبية"
+              ]
+            })
+          }}
+        />
+
         {/* Simple Background Gradient */}
         <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900 to-black" />
 
@@ -71,233 +128,556 @@ export default function HeroSection({
           backgroundSize: '50px 50px'
         }} />
 
-        {/* Hero Content - Centered Apple Style */}
-        <div className="relative flex items-center justify-center z-10 pt-32 pb-16 md:pt-40 md:pb-20 lg:pt-48 lg:pb-24">
-          <div className="container mx-auto px-6 md:px-12 max-w-5xl text-center">
-            {/* Logo - Simplified for performance */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="mb-4 relative"
-            >
-              {/* Static Glow - CSS only */}
-              <div className="absolute inset-0 -m-20 bg-gradient-to-r from-emerald-500/25 via-green-500/25 to-emerald-500/25 blur-3xl rounded-full animate-pulse-slow" />
+        {/* Split Hero - Text Left, Images Right */}
+        <div className="relative z-10 min-h-screen flex items-center py-20 lg:py-0">
+          <div className="container mx-auto px-4 md:px-8 lg:px-12 max-w-[1600px]">
+            <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 xl:gap-16 items-center">
 
-              {/* Logo Container */}
-              <div
-                className={`relative mx-auto max-w-full group ${
-                  isArabic
-                    ? 'w-[300px] h-28 md:w-[400px] md:h-36 lg:w-[500px] lg:h-44'
-                    : 'w-[400px] h-40 md:w-[550px] md:h-52 lg:w-[700px] lg:h-64'
-                }`}
-              >
-                {/* Static Shadow Layer */}
-                <div className="absolute inset-0 bg-emerald-500/20 blur-2xl opacity-30" />
-
-                {/* Logo Image */}
-                <div className="relative w-full h-full">
-                  <Image
-                    src={isArabic ? "/logos/full-logo-ar.webp" : "/logos/full-logo-en.webp"}
-                    alt={isArabic ? "شعار هلثي فارما" : "Healthy Pharma Logo"}
-                    fill
-                    className="object-contain"
-                    priority
-                    sizes="(max-width: 768px) 300px, (max-width: 1024px) 400px, 700px"
-                    style={{
-                      filter: "drop-shadow(0 25px 50px rgba(16, 185, 129, 0.3))"
-                    }}
-                  />
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Text under logo */}
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.8,
-                delay: 0.3,
-                ease: [0.22, 1, 0.36, 1]
-              }}
-              className={isArabic
-                ? "text-xl md:text-2xl lg:text-3xl text-gray-400 font-bold mb-8 md:mb-10 -mt-2"
-                : "text-xl md:text-2xl lg:text-3xl text-gray-400 font-semibold mb-8 md:mb-10 -mt-2"
-              }
-              style={{
-                fontFamily: isArabic ? 'var(--font-cairo)' : 'var(--font-montserrat)',
-              }}
-            >
-              {isArabic ? 'الصناعات الدوائية والطبية' : 'Pharmaceutical & Medical Industries'}
-            </motion.p>
-
-            {/* Subtitle - Clean and Simple */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 1,
-                delay: 0.4,
-                ease: [0.22, 1, 0.36, 1]
-              }}
-              className={isArabic
-                ? "text-2xl md:text-3xl lg:text-4xl text-gray-400 font-bold mb-4"
-                : "text-xl md:text-2xl lg:text-3xl text-gray-400 font-medium mb-3"
-              }
-              style={{
-                fontFamily: isArabic ? 'var(--font-cairo)' : 'var(--font-montserrat)',
-              }}
-            >
-              {t("heroSubtitle")}
-            </motion.p>
-
-            {/* Tagline */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 1,
-                delay: 0.6,
-                ease: [0.22, 1, 0.36, 1]
-              }}
-              className={isArabic
-                ? "text-xl md:text-2xl lg:text-3xl text-emerald-500 font-black mb-6 md:mb-8"
-                : "text-lg md:text-xl lg:text-2xl text-emerald-500 font-semibold mb-6 md:mb-8"
-              }
-              style={{
-                fontFamily: isArabic ? 'var(--font-cairo)' : 'var(--font-montserrat)',
-              }}
-            >
-              {t("heroTagline")}
-            </motion.p>
-
-            {/* CTA Button - Contact Us */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 1,
-                delay: 0.8,
-                ease: [0.22, 1, 0.36, 1]
-              }}
-              className="flex justify-center items-center"
-            >
-              <Link href="/contact-us">
-                <Button
-                  size="lg"
-                  className={`bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-5 md:px-10 md:py-6 rounded-full transition-all duration-300 shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 hover:scale-105 ${
-                    isArabic ? 'text-lg md:text-xl font-bold' : 'text-base md:text-lg font-semibold'
-                  }`}
-                  style={{
-                    fontFamily: isArabic ? 'var(--font-cairo)' : 'var(--font-montserrat)',
-                  }}
+              {/* Cards - Shows on LEFT for Arabic (order-2 in RTL = left), RIGHT for English */}
+              {/* On mobile/tablet: order-2 ensures cards come AFTER text */}
+              {isArabic && (
+                <motion.div
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                  className="relative flex-1 w-full order-2 lg:order-2"
                 >
-                  {t("contactUsButton")}
-                </Button>
-              </Link>
-            </motion.div>
-          </div>
-        </div>
+                  {/* Ambient Glow */}
+                  <div className="absolute inset-0 -m-10 pointer-events-none">
+                    <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-emerald-500/20 rounded-full blur-[80px]" />
+                    <div className="absolute bottom-1/4 left-1/4 w-48 h-48 bg-green-500/15 rounded-full blur-[60px]" />
+                  </div>
 
-        {/* Split Image at Bottom of Hero Section */}
-        <div className="relative z-10 mt-4 md:mt-8">
-          {/* Split Image Container */}
-          <div className="relative h-[400px] md:h-[550px] lg:h-[700px] max-w-[1792px] mx-auto">
-            {/* Split Panels */}
-            <div className="absolute inset-0 flex gap-1 md:gap-2 px-4 md:px-8 lg:px-16">
-              {/* Panel 1 */}
+                  {/* Bento Grid */}
+                  <div className="relative grid grid-cols-2 gap-3 md:gap-4 lg:gap-5 xl:gap-6 min-[1920px]:gap-7 min-[2560px]:gap-8 p-2">
+                    {/* Card 1 - Large Top Left */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      transition={{ delay: 0.3, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                      whileHover={{ scale: 1.02, y: -5 }}
+                      className="relative col-span-1 row-span-2 h-[280px] md:h-[340px] lg:h-[450px] xl:h-[520px] 2xl:h-[420px] min-[1920px]:h-[580px] min-[2560px]:h-[720px] rounded-2xl md:rounded-3xl overflow-hidden cursor-pointer group"
+                      style={{ boxShadow: '0 20px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(16, 185, 129, 0.1)' }}
+                    >
+                      <Image
+                        src="/images/hero-main.jpg"
+                        alt="هلثي فارما - التميز الدوائي والابتكار في الصناعات الطبية"
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                        sizes="(max-width: 768px) 50vw, (max-width: 1024px) 40vw, 300px"
+                        priority
+                        fetchPriority="high"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                      <div className="absolute inset-0 bg-emerald-500/0 group-hover:bg-emerald-500/10 transition-all duration-300" />
+                      <div className="absolute inset-0 rounded-2xl md:rounded-3xl border border-white/10 group-hover:border-emerald-500/40 transition-colors duration-300" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 skew-x-12" />
+                      <div className="absolute bottom-4 left-4 right-4">
+                        <div className="w-8 h-1 bg-emerald-500 rounded-full mb-2" />
+                        <h3 className="text-lg md:text-xl font-bold text-white font-cairo">التميز الدوائي</h3>
+                      </div>
+                      <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm border border-white/20 flex items-center justify-center">
+                        <span className="text-emerald-400 text-xs font-bold">01</span>
+                      </div>
+                    </motion.div>
+
+                    {/* Card 2 - Top Right */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      transition={{ delay: 0.4, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                      whileHover={{ scale: 1.02, y: -5 }}
+                      className="relative h-[135px] md:h-[165px] lg:h-[220px] xl:h-[255px] 2xl:h-[205px] min-[1920px]:h-[285px] min-[2560px]:h-[355px] rounded-2xl md:rounded-3xl overflow-hidden cursor-pointer group"
+                      style={{ boxShadow: '0 15px 40px rgba(0, 0, 0, 0.35), 0 0 25px rgba(16, 185, 129, 0.08)' }}
+                    >
+                      <Image
+                        src="/images/hero-main2.jpg"
+                        alt="شهادات جودة معتمدة من الهيئات الدوائية المصرية والعالمية"
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                        sizes="(max-width: 768px) 50vw, (max-width: 1024px) 40vw, 300px"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                      <div className="absolute inset-0 bg-emerald-500/0 group-hover:bg-emerald-500/10 transition-all duration-300" />
+                      <div className="absolute inset-0 rounded-2xl md:rounded-3xl border border-white/10 group-hover:border-emerald-500/40 transition-colors duration-300" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 skew-x-12" />
+                      <div className="absolute bottom-3 left-3 right-3">
+                        <h3 className="text-sm md:text-base font-bold text-white font-cairo">شهادات جودة معتمدة</h3>
+                      </div>
+                      <div className="absolute top-2 right-2 w-6 h-6 rounded-full bg-black/40 backdrop-blur-sm border border-white/20 flex items-center justify-center">
+                        <span className="text-emerald-400 text-[10px] font-bold">02</span>
+                      </div>
+                    </motion.div>
+
+                    {/* Card 3 - Bottom Right */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      transition={{ delay: 0.5, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                      whileHover={{ scale: 1.02, y: -5 }}
+                      className="relative h-[135px] md:h-[165px] lg:h-[220px] xl:h-[255px] 2xl:h-[205px] min-[1920px]:h-[285px] min-[2560px]:h-[355px] rounded-2xl md:rounded-3xl overflow-hidden cursor-pointer group"
+                      style={{ boxShadow: '0 15px 40px rgba(0, 0, 0, 0.35), 0 0 25px rgba(16, 185, 129, 0.08)' }}
+                    >
+                      <Image
+                        src="/images/hero-main3.jpg"
+                        alt="فريق توزيع هلثي فارما يغطي 27 محافظة مصرية"
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                        sizes="(max-width: 768px) 50vw, (max-width: 1024px) 40vw, 300px"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                      <div className="absolute inset-0 bg-emerald-500/0 group-hover:bg-emerald-500/10 transition-all duration-300" />
+                      <div className="absolute inset-0 rounded-2xl md:rounded-3xl border border-white/10 group-hover:border-emerald-500/40 transition-colors duration-300" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 skew-x-12" />
+                      <div className="absolute bottom-3 left-3 right-3">
+                        <h3 className="text-sm md:text-base font-bold text-white font-cairo">فريق توزيع عالمي</h3>
+                      </div>
+                      <div className="absolute top-2 right-2 w-6 h-6 rounded-full bg-black/40 backdrop-blur-sm border border-white/20 flex items-center justify-center">
+                        <span className="text-emerald-400 text-[10px] font-bold">03</span>
+                      </div>
+                    </motion.div>
+
+                    {/* Card 4 - Full Width Bottom (Featured) */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      transition={{ delay: 0.6, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                      whileHover={{ scale: 1.01, y: -3 }}
+                      className="relative col-span-2 h-[160px] md:h-[200px] lg:h-[280px] xl:h-[320px] 2xl:h-[240px] min-[1920px]:h-[360px] min-[2560px]:h-[450px] rounded-2xl md:rounded-3xl overflow-hidden cursor-pointer group"
+                      style={{ boxShadow: '0 25px 60px rgba(0, 0, 0, 0.45), 0 0 40px rgba(16, 185, 129, 0.12)' }}
+                    >
+                      <Image
+                        src="/images/hero-bottom.jpg"
+                        alt="رحلة التميز في الصناعات الدوائية - هلثي فارما مصر"
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 600px"
+                        priority
+                        fetchPriority="high"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      <div className="absolute inset-0 rounded-2xl md:rounded-3xl border-2 border-white/10 group-hover:border-emerald-500/50 transition-colors duration-300" />
+                      <motion.div
+                        initial={{ x: '-100%' }}
+                        animate={{ x: '200%' }}
+                        transition={{ delay: 1.5, duration: 1.5, ease: "easeInOut" }}
+                        className="absolute inset-y-0 w-1/3 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"
+                      />
+                      <div className="absolute top-3 left-3 md:top-4 md:left-4">
+                        <div className="px-3 py-1 rounded-full bg-emerald-500/20 backdrop-blur-sm border border-emerald-400/40">
+                          <span className="text-xs font-bold text-emerald-400 font-cairo">مميز</span>
+                        </div>
+                      </div>
+                      <div className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6">
+                        <div className="flex items-center gap-2 mb-2">
+                          <div className="w-6 h-1 bg-emerald-500 rounded-full" />
+                          <div className="w-3 h-1 bg-emerald-400/50 rounded-full" />
+                        </div>
+                        <h3 className="text-xl md:text-2xl lg:text-3xl font-black text-white font-cairo">رحلة التميز في الصناعات الدوائية</h3>
+                      </div>
+                      <div className="absolute top-3 right-3 md:top-4 md:right-4 w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm border border-white/20 flex items-center justify-center">
+                        <span className="text-emerald-400 text-xs font-bold">04</span>
+                      </div>
+                    </motion.div>
+                  </div>
+
+                  {/* Floating Elements - Reduced for performance */}
+                  <div className="absolute inset-0 pointer-events-none hidden lg:block">
+                    {[0, 1, 2].map((i) => (
+                      <motion.div
+                        key={i}
+                        className="absolute w-1.5 h-1.5 rounded-full bg-emerald-400/50"
+                        style={{
+                          left: `${25 + i * 25}%`,
+                          top: `${20 + (i % 2) * 40}%`,
+                        }}
+                        animate={{
+                          y: [0, -10, 0],
+                          opacity: [0.3, 0.6, 0.3],
+                        }}
+                        transition={{
+                          duration: 3,
+                          repeat: Infinity,
+                          delay: i * 0.5,
+                          ease: "easeInOut",
+                        }}
+                      />
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+
+              {/* Text Content - Right side for Arabic (order-1 in RTL = right), Left side for English */}
+              {/* On mobile/tablet: order-1 ensures text comes BEFORE cards */}
               <motion.div
-                initial={{ opacity: 0, y: 60, scale: 0.95 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: false, amount: 0.2 }}
-                transition={{ duration: 1, delay: 0, ease: [0.22, 1, 0.36, 1] }}
-                className="relative flex-1 overflow-hidden rounded-t-2xl md:rounded-t-3xl"
-                style={{
-                  boxShadow: '0 -20px 60px -15px rgba(0, 0, 0, 0.8), 0 0 30px rgba(16, 185, 129, 0.1)',
-                }}
+                initial={{ opacity: 0, x: isArabic ? -50 : -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                className={`flex-1 space-y-6 md:space-y-8 text-center ${isArabic ? 'order-1 lg:text-right lg:order-1' : 'lg:text-left'}`}
               >
-                <div className="absolute inset-0 overflow-hidden">
-                  <Image
-                    src="/images/hero5.webp"
-                    alt=""
-                    fill
-                    className="object-cover"
-                    sizes="33vw"
-                    style={{ objectPosition: '0% center' }}
-                  />
-                </div>
-                <div className="absolute inset-y-0 right-0 w-8 md:w-16 bg-gradient-to-l from-black/70 to-transparent" />
-                <div className="absolute inset-x-0 top-0 h-20 md:h-32 bg-gradient-to-b from-black/60 to-transparent" />
-                <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white/5 to-transparent" />
+                {/* Logo */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1, duration: 0.6 }}
+                  className={`relative mx-auto ${isArabic ? 'lg:mr-0 lg:ml-auto' : 'lg:ml-0 lg:mr-auto'}`}
+                >
+                  <div className={`relative ${
+                    isArabic
+                      ? 'w-[240px] h-20 md:w-[300px] md:h-24 lg:w-[380px] lg:h-32'
+                      : 'w-[280px] h-24 md:w-[360px] md:h-28 lg:w-[450px] lg:h-36'
+                  }`}>
+                    <Image
+                      src={isArabic ? "/logos/full-logo-ar.webp" : "/logos/full-logo-en.webp"}
+                      alt={isArabic ? "شعار هلثي فارما" : "Healthy Pharma Logo"}
+                      fill
+                      className="object-contain"
+                      priority
+                      sizes="(max-width: 768px) 280px, (max-width: 1024px) 360px, 450px"
+                      style={{ filter: "drop-shadow(0 10px 30px rgba(16, 185, 129, 0.25))" }}
+                    />
+                  </div>
+                </motion.div>
+
+                {/* Industry Label */}
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.15, duration: 0.6 }}
+                  className={`text-gray-400 ${
+                    isArabic ? 'text-lg md:text-xl lg:text-2xl font-bold' : 'text-base md:text-lg lg:text-xl font-semibold'
+                  }`}
+                  style={{ fontFamily: isArabic ? 'var(--font-cairo)' : 'var(--font-montserrat)' }}
+                >
+                  {isArabic ? 'للصناعات الدوائية والطبية' : 'Pharmaceutical & Medical Industries'}
+                </motion.p>
+
+                {/* Main Headline */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2, duration: 0.6 }}
+                  className="space-y-2"
+                >
+                  <h1
+                    className={`font-black leading-tight ${
+                      isArabic
+                        ? 'text-3xl md:text-4xl lg:text-5xl xl:text-6xl'
+                        : 'text-3xl md:text-4xl lg:text-5xl xl:text-6xl'
+                    }`}
+                    style={{ fontFamily: isArabic ? 'var(--font-cairo)' : 'var(--font-montserrat)' }}
+                  >
+                    <span className="text-white">{isArabic ? 'نحو مستقبل ' : 'Towards a '}</span>
+                    <span className="bg-gradient-to-r from-emerald-400 via-green-400 to-emerald-500 bg-clip-text text-transparent">
+                      {isArabic ? 'صحي أفضل' : 'Healthier Future'}
+                    </span>
+                  </h1>
+                </motion.div>
+
+                {/* Subtitle */}
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3, duration: 0.6 }}
+                  className={`text-gray-400 leading-relaxed max-w-xl ${
+                    isArabic
+                      ? 'text-lg md:text-xl lg:text-2xl mx-auto lg:mx-0 lg:mr-0'
+                      : 'text-base md:text-lg lg:text-xl mx-auto lg:mx-0'
+                  }`}
+                  style={{ fontFamily: isArabic ? 'var(--font-tajawal)' : 'var(--font-inter)' }}
+                >
+                  {t("heroSubtitle")}
+                </motion.p>
+
+                {/* Tagline */}
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4, duration: 0.6 }}
+                  className={`text-emerald-400 font-bold ${
+                    isArabic ? 'text-xl md:text-2xl' : 'text-lg md:text-xl'
+                  }`}
+                  style={{ fontFamily: isArabic ? 'var(--font-cairo)' : 'var(--font-montserrat)' }}
+                >
+                  {t("heroTagline")}
+                </motion.p>
+
+                {/* CTA Buttons */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5, duration: 0.6 }}
+                  className={`flex flex-col sm:flex-row gap-4 justify-center ${isArabic ? 'lg:justify-end sm:flex-row-reverse' : 'lg:justify-start'}`}
+                >
+                  <Link href="/contact-us">
+                    <Button
+                      size="lg"
+                      className={`bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-6 rounded-2xl transition-all duration-300 shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40 hover:scale-105 ${
+                        isArabic ? 'text-lg font-bold' : 'text-base font-semibold'
+                      }`}
+                      style={{ fontFamily: isArabic ? 'var(--font-cairo)' : 'var(--font-montserrat)' }}
+                    >
+                      {t("contactUsButton")}
+                    </Button>
+                  </Link>
+                  <Link href="/healthycure">
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      className={`border-2 border-gray-700 hover:border-emerald-500/50 text-white hover:text-emerald-400 px-8 py-6 rounded-2xl transition-all duration-300 hover:bg-emerald-500/10 ${
+                        isArabic ? 'text-lg font-bold' : 'text-base font-semibold'
+                      }`}
+                      style={{ fontFamily: isArabic ? 'var(--font-cairo)' : 'var(--font-montserrat)' }}
+                    >
+                      {isArabic ? 'تعرف علينا' : 'Learn More'}
+                    </Button>
+                  </Link>
+                </motion.div>
+
+                {/* Trust Badges */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.6, duration: 0.6 }}
+                  className={`flex items-center gap-6 pt-4 justify-center ${isArabic ? 'lg:justify-end flex-row-reverse' : 'lg:justify-start'}`}
+                >
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                    <span className={`text-gray-500 text-sm ${isArabic ? 'font-cairo' : 'font-inter'}`}>
+                      {isArabic ? '+15 سنة خبرة' : '15+ Years Experience'}
+                    </span>
+                  </div>
+                  <div className="w-px h-4 bg-gray-700" />
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                    <span className={`text-gray-500 text-sm ${isArabic ? 'font-cairo' : 'font-inter'}`}>
+                      {isArabic ? '+6000 صيدلية' : '6000+ Pharmacies'}
+                    </span>
+                  </div>
+                </motion.div>
               </motion.div>
 
-              {/* Panel 2 */}
+              {/* Image Grid - Right side for English only */}
+              {!isArabic && (
               <motion.div
-                initial={{ opacity: 0, y: 80, scale: 0.95 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-                className="relative flex-1 overflow-hidden rounded-t-2xl md:rounded-t-3xl -mt-8 md:-mt-12"
-                style={{
-                  boxShadow: '0 -25px 70px -15px rgba(0, 0, 0, 0.9), 0 0 40px rgba(16, 185, 129, 0.15)',
-                }}
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                className="relative flex-1"
               >
-                <div className="absolute inset-0 overflow-hidden">
-                  <Image
-                    src="/images/hero5.webp"
-                    alt=""
-                    fill
-                    className="object-cover"
-                    sizes="33vw"
-                    style={{ objectPosition: '33% center' }}
-                  />
+                {/* Ambient Glow */}
+                <div className="absolute inset-0 -m-10 pointer-events-none">
+                  <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-emerald-500/20 rounded-full blur-[80px]" />
+                  <div className="absolute bottom-1/4 left-1/4 w-48 h-48 bg-green-500/15 rounded-full blur-[60px]" />
                 </div>
-                <div className="absolute inset-y-0 left-0 w-6 md:w-12 bg-gradient-to-r from-black/60 to-transparent" />
-                <div className="absolute inset-y-0 right-0 w-6 md:w-12 bg-gradient-to-l from-black/60 to-transparent" />
-                <div className="absolute inset-x-0 top-0 h-24 md:h-40 bg-gradient-to-b from-black/70 to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-t from-emerald-500/5 to-transparent" />
-              </motion.div>
 
-              {/* Panel 3 */}
-              <motion.div
-                initial={{ opacity: 0, y: 100, scale: 0.95 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="relative flex-1 overflow-hidden rounded-t-2xl md:rounded-t-3xl -mt-4 md:-mt-6"
-                style={{
-                  boxShadow: '0 -30px 80px -15px rgba(0, 0, 0, 0.9), 0 0 50px rgba(16, 185, 129, 0.12)',
-                }}
-              >
-                <div className="absolute inset-0 overflow-hidden">
-                  <Image
-                    src="/images/hero5.webp"
-                    alt=""
-                    fill
-                    className="object-cover"
-                    sizes="33vw"
-                    style={{ objectPosition: '66% center' }}
-                  />
+                {/* Bento Grid */}
+                <div className="relative grid grid-cols-2 gap-3 md:gap-4 lg:gap-5 xl:gap-6 min-[1920px]:gap-7 min-[2560px]:gap-8 p-2">
+                  {/* Card 1 - Large Top Left */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ delay: 0.3, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                    whileHover={{ scale: 1.02, y: -5 }}
+                    className="relative col-span-1 row-span-2 h-[280px] md:h-[340px] lg:h-[450px] xl:h-[520px] 2xl:h-[420px] min-[1920px]:h-[580px] min-[2560px]:h-[720px] rounded-2xl md:rounded-3xl overflow-hidden cursor-pointer group"
+                    style={{ boxShadow: '0 20px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(16, 185, 129, 0.1)' }}
+                  >
+                    <Image
+                      src="/images/hero-main.jpg"
+                      alt={isArabic ? "هلثي فارما - التميز الدوائي والابتكار" : "Healthy Pharma - Pharmaceutical Excellence and Innovation in Egypt"}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      sizes="(max-width: 768px) 50vw, (max-width: 1024px) 40vw, 300px"
+                      priority
+                      fetchPriority="high"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                    <div className="absolute inset-0 bg-emerald-500/0 group-hover:bg-emerald-500/10 transition-all duration-300" />
+                    <div className="absolute inset-0 rounded-2xl md:rounded-3xl border border-white/10 group-hover:border-emerald-500/40 transition-colors duration-300" />
+                    {/* Shine Effect */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 skew-x-12" />
+                    {/* Label */}
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <div className="w-8 h-1 bg-emerald-500 rounded-full mb-2" />
+                      <h3 className={`text-lg md:text-xl font-bold text-white ${isArabic ? 'font-cairo' : 'font-montserrat'}`}>
+                        {isArabic ? 'التميز الدوائي' : 'Excellence'}
+                      </h3>
+                    </div>
+                    {/* Badge */}
+                    <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm border border-white/20 flex items-center justify-center">
+                      <span className="text-emerald-400 text-xs font-bold">01</span>
+                    </div>
+                  </motion.div>
+
+                  {/* Card 2 - Top Right */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ delay: 0.4, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                    whileHover={{ scale: 1.02, y: -5 }}
+                    className="relative h-[135px] md:h-[165px] lg:h-[220px] xl:h-[255px] 2xl:h-[205px] min-[1920px]:h-[285px] min-[2560px]:h-[355px] rounded-2xl md:rounded-3xl overflow-hidden cursor-pointer group"
+                    style={{ boxShadow: '0 15px 40px rgba(0, 0, 0, 0.35), 0 0 25px rgba(16, 185, 129, 0.08)' }}
+                  >
+                    <Image
+                      src="/images/hero-main2.jpg"
+                      alt={isArabic ? "شهادات جودة معتمدة من الهيئات الدوائية" : "Certified Quality Standards from Egyptian and International Pharmaceutical Authorities"}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      sizes="(max-width: 768px) 50vw, (max-width: 1024px) 40vw, 300px"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                    <div className="absolute inset-0 bg-emerald-500/0 group-hover:bg-emerald-500/10 transition-all duration-300" />
+                    <div className="absolute inset-0 rounded-2xl md:rounded-3xl border border-white/10 group-hover:border-emerald-500/40 transition-colors duration-300" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 skew-x-12" />
+                    <div className="absolute bottom-3 left-3 right-3">
+                      <h3 className={`text-sm md:text-base font-bold text-white ${isArabic ? 'font-cairo' : 'font-montserrat'}`}>
+                        {isArabic ? 'شهادات جودة معتمدة' : 'Certified Quality'}
+                      </h3>
+                    </div>
+                    <div className="absolute top-2 right-2 w-6 h-6 rounded-full bg-black/40 backdrop-blur-sm border border-white/20 flex items-center justify-center">
+                      <span className="text-emerald-400 text-[10px] font-bold">02</span>
+                    </div>
+                  </motion.div>
+
+                  {/* Card 3 - Bottom Right */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ delay: 0.5, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                    whileHover={{ scale: 1.02, y: -5 }}
+                    className="relative h-[135px] md:h-[165px] lg:h-[220px] xl:h-[255px] 2xl:h-[205px] min-[1920px]:h-[285px] min-[2560px]:h-[355px] rounded-2xl md:rounded-3xl overflow-hidden cursor-pointer group"
+                    style={{ boxShadow: '0 15px 40px rgba(0, 0, 0, 0.35), 0 0 25px rgba(16, 185, 129, 0.08)' }}
+                  >
+                    <Image
+                      src="/images/hero-main3.jpg"
+                      alt={isArabic ? "فريق توزيع هلثي فارما يغطي 27 محافظة" : "Healthy Pharma Distribution Team Covering 27 Egyptian Governorates"}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      sizes="(max-width: 768px) 50vw, (max-width: 1024px) 40vw, 300px"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                    <div className="absolute inset-0 bg-emerald-500/0 group-hover:bg-emerald-500/10 transition-all duration-300" />
+                    <div className="absolute inset-0 rounded-2xl md:rounded-3xl border border-white/10 group-hover:border-emerald-500/40 transition-colors duration-300" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 skew-x-12" />
+                    <div className="absolute bottom-3 left-3 right-3">
+                      <h3 className={`text-sm md:text-base font-bold text-white ${isArabic ? 'font-cairo' : 'font-montserrat'}`}>
+                        {isArabic ? 'فريق توزيع عالمي' : 'Global Distribution'}
+                      </h3>
+                    </div>
+                    <div className="absolute top-2 right-2 w-6 h-6 rounded-full bg-black/40 backdrop-blur-sm border border-white/20 flex items-center justify-center">
+                      <span className="text-emerald-400 text-[10px] font-bold">03</span>
+                    </div>
+                  </motion.div>
+
+                  {/* Card 4 - Full Width Bottom (Featured) */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ delay: 0.6, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                    whileHover={{ scale: 1.01, y: -3 }}
+                    className="relative col-span-2 h-[160px] md:h-[200px] lg:h-[280px] xl:h-[320px] 2xl:h-[240px] min-[1920px]:h-[360px] min-[2560px]:h-[450px] rounded-2xl md:rounded-3xl overflow-hidden cursor-pointer group"
+                    style={{ boxShadow: '0 25px 60px rgba(0, 0, 0, 0.45), 0 0 40px rgba(16, 185, 129, 0.12)' }}
+                  >
+                    <Image
+                      src="/images/hero-bottom.jpg"
+                      alt={isArabic ? "رحلة التميز في الصناعات الدوائية" : "Journey of Pharmaceutical Excellence - Healthy Pharma Egypt"}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 600px"
+                      priority
+                      fetchPriority="high"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute inset-0 rounded-2xl md:rounded-3xl border-2 border-white/10 group-hover:border-emerald-500/50 transition-colors duration-300" />
+                    {/* Premium Shine */}
+                    <motion.div
+                      initial={{ x: '-100%' }}
+                      animate={{ x: '200%' }}
+                      transition={{ delay: 1.5, duration: 1.5, ease: "easeInOut" }}
+                      className="absolute inset-y-0 w-1/3 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"
+                    />
+                    {/* Featured Badge */}
+                    <div className="absolute top-3 left-3 md:top-4 md:left-4">
+                      <div className="px-3 py-1 rounded-full bg-emerald-500/20 backdrop-blur-sm border border-emerald-400/40">
+                        <span className={`text-xs font-bold text-emerald-400 ${isArabic ? 'font-cairo' : 'font-montserrat'}`}>
+                          {isArabic ? 'مميز' : 'Featured'}
+                        </span>
+                      </div>
+                    </div>
+                    {/* Content */}
+                    <div className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6">
+                      <div className="flex items-center gap-2 mb-2">
+                        <div className="w-6 h-1 bg-emerald-500 rounded-full" />
+                        <div className="w-3 h-1 bg-emerald-400/50 rounded-full" />
+                      </div>
+                      <h3 className={`text-xl md:text-2xl lg:text-3xl font-black text-white ${isArabic ? 'font-cairo' : 'font-montserrat'}`}>
+                        {isArabic ? 'رحلة التميز في الصناعات الدوائية' : 'Journey of Pharmaceutical Excellence'}
+                      </h3>
+                    </div>
+                    {/* Badge */}
+                    <div className="absolute top-3 right-3 md:top-4 md:right-4 w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm border border-white/20 flex items-center justify-center">
+                      <span className="text-emerald-400 text-xs font-bold">04</span>
+                    </div>
+                  </motion.div>
                 </div>
-                {/* Left Edge Fade */}
-                <div className="absolute inset-y-0 left-0 w-8 md:w-16 bg-gradient-to-r from-black/70 to-transparent" />
-                {/* Top Fade */}
-                <div className="absolute inset-x-0 top-0 h-20 md:h-32 bg-gradient-to-b from-black/60 to-transparent" />
+
+                {/* Floating Elements - Reduced for performance */}
+                <div className="absolute inset-0 pointer-events-none hidden lg:block">
+                  {[0, 1, 2].map((i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute w-1.5 h-1.5 rounded-full bg-emerald-400/50"
+                      style={{
+                        left: `${25 + i * 25}%`,
+                        top: `${20 + (i % 2) * 40}%`,
+                      }}
+                      animate={{
+                        y: [0, -10, 0],
+                        opacity: [0.3, 0.6, 0.3],
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        delay: i * 0.5,
+                        ease: "easeInOut",
+                      }}
+                    />
+                  ))}
+                </div>
               </motion.div>
+              )}
             </div>
-
-            {/* Static Bottom Glow */}
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[60%] h-32 bg-emerald-500/10 blur-3xl rounded-full" />
           </div>
         </div>
+
+        {/* Scroll Down Button */}
+        <motion.button
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.2, duration: 0.6 }}
+          onClick={() => document.getElementById('story-section')?.scrollIntoView({ behavior: 'smooth' })}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 text-white/60 hover:text-emerald-400 transition-colors duration-300 cursor-pointer group"
+        >
+          <span className={`text-sm font-medium ${isArabic ? 'font-cairo' : 'font-inter'}`}>
+            {isArabic ? 'اكتشف المزيد' : 'Discover More'}
+          </span>
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            className="w-10 h-10 rounded-full border-2 border-current flex items-center justify-center group-hover:border-emerald-400 group-hover:bg-emerald-500/10 transition-all duration-300"
+          >
+            <ChevronDown className="w-5 h-5" />
+          </motion.div>
+        </motion.button>
       </section>
 
-      {/* SECTION 2: THE STORY BEGINS - DARK */}
-      <section ref={section1Ref} className="relative min-h-screen bg-gradient-to-b from-black via-gray-950 to-black py-32 overflow-hidden">
+      {/* SECTION 2: THE STORY BEGINS - LIGHT */}
+      <section id="story-section" ref={section1Ref} className="relative min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-100 py-32 overflow-hidden">
         {/* Static Background Elements - CSS only */}
-        <div className="absolute top-20 right-20 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 left-20 w-[500px] h-[500px] bg-green-500/8 rounded-full blur-3xl" />
+        <div className="absolute top-20 right-20 w-96 h-96 bg-emerald-500/20 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 left-20 w-[500px] h-[500px] bg-green-500/15 rounded-full blur-3xl" />
 
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
@@ -313,8 +693,8 @@ export default function HeroSection({
                 animate={section1InView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
                 className={isArabic
-                  ? "text-5xl md:text-7xl lg:text-8xl font-black text-white leading-tight"
-                  : "text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight"
+                  ? "text-5xl md:text-7xl lg:text-8xl font-black text-gray-900 leading-tight"
+                  : "text-4xl md:text-6xl lg:text-7xl font-black text-gray-900 leading-tight"
                 }
                 style={{
                   fontFamily: isArabic ? 'var(--font-cairo)' : 'var(--font-montserrat)',
@@ -328,8 +708,8 @@ export default function HeroSection({
                 animate={section1InView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.4, duration: 1, ease: [0.22, 1, 0.36, 1] }}
                 className={isArabic
-                  ? "text-2xl md:text-4xl text-gray-400 leading-relaxed max-w-4xl mx-auto"
-                  : "text-xl md:text-3xl text-gray-400 leading-relaxed max-w-4xl mx-auto"
+                  ? "text-2xl md:text-4xl text-gray-600 leading-relaxed max-w-4xl mx-auto"
+                  : "text-xl md:text-3xl text-gray-600 leading-relaxed max-w-4xl mx-auto"
                 }
                 style={{
                   fontFamily: isArabic ? 'var(--font-tajawal)' : 'var(--font-inter)',
@@ -367,10 +747,10 @@ export default function HeroSection({
                   }}
                 >
                   <motion.div
-                    className="relative p-6 md:p-8 rounded-2xl bg-gray-900/50 border-2 border-gray-800 shadow-lg overflow-hidden backdrop-blur-sm"
+                    className="relative p-6 md:p-8 rounded-2xl bg-white border-2 border-gray-200 shadow-lg overflow-hidden backdrop-blur-sm"
                     whileHover={{
-                      borderColor: "rgba(16, 185, 129, 0.4)",
-                      boxShadow: "0 20px 40px rgba(16, 185, 129, 0.2)"
+                      borderColor: "rgba(16, 185, 129, 0.5)",
+                      boxShadow: "0 20px 40px rgba(16, 185, 129, 0.15)"
                     }}
                     transition={{ duration: 0.3 }}
                   >
@@ -399,9 +779,9 @@ export default function HeroSection({
                         rotate: [0, -10, 10, 0],
                         scale: 1.2
                       }}
-                      className="relative w-14 h-14 md:w-16 md:h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-emerald-500/30 to-green-500/30 flex items-center justify-center"
+                      className="relative w-14 h-14 md:w-16 md:h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-green-500/20 flex items-center justify-center"
                     >
-                      <stat.icon className="w-7 h-7 md:w-8 md:h-8 text-emerald-400" />
+                      <stat.icon className="w-7 h-7 md:w-8 md:h-8 text-emerald-600" />
                     </motion.div>
 
                     {/* Value with Counter Animation */}
@@ -414,7 +794,7 @@ export default function HeroSection({
                         stiffness: 150,
                         damping: 15
                       }}
-                      className={`relative text-4xl md:text-5xl lg:text-6xl font-black bg-gradient-to-br from-emerald-400 to-green-400 bg-clip-text text-transparent mb-2 ${
+                      className={`relative text-4xl md:text-5xl lg:text-6xl font-black bg-gradient-to-br from-emerald-600 to-green-600 bg-clip-text text-transparent mb-2 ${
                         isArabic ? 'text-5xl md:text-6xl lg:text-7xl' : ''
                       }`}
                       style={{
@@ -428,7 +808,7 @@ export default function HeroSection({
                       initial={{ opacity: 0 }}
                       animate={section1InView ? { opacity: 1 } : {}}
                       transition={{ delay: 1.2 + index * 0.1 }}
-                      className={`relative text-xs md:text-sm text-gray-400 uppercase tracking-wider font-bold ${
+                      className={`relative text-xs md:text-sm text-gray-600 uppercase tracking-wider font-bold ${
                         isArabic ? 'text-sm md:text-base' : ''
                       }`}
                       style={{
@@ -443,10 +823,30 @@ export default function HeroSection({
             </div>
           </div>
         </div>
+
+        {/* Scroll Down Button */}
+        <motion.button
+          initial={{ opacity: 0 }}
+          animate={section1InView ? { opacity: 1 } : {}}
+          transition={{ delay: 1, duration: 0.6 }}
+          onClick={() => document.getElementById('showcase-section')?.scrollIntoView({ behavior: 'smooth' })}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 text-gray-500 hover:text-emerald-600 transition-colors duration-300 cursor-pointer group"
+        >
+          <span className={`text-sm font-medium ${isArabic ? 'font-cairo' : 'font-inter'}`}>
+            {isArabic ? 'المزيد' : 'More'}
+          </span>
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            className="w-10 h-10 rounded-full border-2 border-current flex items-center justify-center group-hover:border-emerald-500 group-hover:bg-emerald-500/10 transition-all duration-300"
+          >
+            <ChevronDown className="w-5 h-5" />
+          </motion.div>
+        </motion.button>
       </section>
 
       {/* SECTION 3: VISUAL SHOWCASE - LUXURY DESIGN */}
-      <section className="relative min-h-screen bg-gradient-to-b from-black via-gray-950 to-black py-32 overflow-hidden">
+      <section id="showcase-section" className="relative min-h-screen bg-gradient-to-b from-black via-gray-950 to-black py-32 overflow-hidden">
         {/* Static Background Elements - CSS only */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
@@ -558,7 +958,8 @@ export default function HeroSection({
                         />
                       </motion.div>
 
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                      {/* Stronger gradient for text visibility on mobile */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
 
                       <motion.div
                         initial={{ opacity: 0 }}
@@ -571,31 +972,26 @@ export default function HeroSection({
                         initial={{ scale: 0, rotate: -180 }}
                         animate={{ scale: 1, rotate: 0 }}
                         transition={{ delay: 0.3 + index * 0.1, type: "spring", stiffness: 200 }}
-                        className="absolute top-6 left-6 z-10"
+                        className="absolute top-3 left-3 md:top-6 md:left-6 z-10"
                       >
-                        <div className="w-12 h-12 rounded-2xl bg-emerald-500/20 backdrop-blur-xl border border-emerald-400/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                          <span className={`text-xl font-black text-emerald-400 ${isArabic ? 'font-cairo' : 'font-montserrat'}`}>
+                        <div className="w-8 h-8 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-emerald-500/30 backdrop-blur-xl border border-emerald-400/40 flex items-center justify-center">
+                          <span className={`text-sm md:text-xl font-black text-emerald-400 ${isArabic ? 'font-cairo' : 'font-montserrat'}`}>
                             {index + 1}
                           </span>
                         </div>
                       </motion.div>
 
-                      {/* Text Content */}
-                      <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
+                      {/* Text Content - Always visible on mobile */}
+                      <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 z-10">
                         <motion.div
-                          initial={{ y: 20, opacity: 0 }}
-                          whileHover={{ y: 0, opacity: 1 }}
+                          initial={{ y: 0, opacity: 1 }}
+                          animate={{ y: 0, opacity: 1 }}
                           transition={{ duration: 0.3 }}
                         >
-                          <h3 className={`text-2xl font-black text-white mb-2 ${isArabic ? 'font-cairo' : 'font-montserrat'}`}>
+                          <h3 className={`text-lg md:text-2xl font-black text-white mb-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] ${isArabic ? 'font-cairo' : 'font-montserrat'}`}>
                             {titles[index]}
                           </h3>
-                          <motion.div
-                            initial={{ scaleX: 0 }}
-                            whileHover={{ scaleX: 1 }}
-                            transition={{ duration: 0.4 }}
-                            className="h-1 w-20 bg-gradient-to-r from-emerald-400 to-green-500 rounded-full origin-left"
-                          />
+                          <div className="h-1 w-16 md:w-20 bg-gradient-to-r from-emerald-400 to-green-500 rounded-full" />
                         </motion.div>
                       </div>
 
@@ -1159,6 +1555,26 @@ export default function HeroSection({
             </motion.div>
           </div>
         </div>
+
+        {/* Scroll Down Button */}
+        <motion.button
+          initial={{ opacity: 0 }}
+          animate={section3InView ? { opacity: 1 } : {}}
+          transition={{ delay: 0.8, duration: 0.6 }}
+          onClick={() => document.getElementById('distribution-section')?.scrollIntoView({ behavior: 'smooth' })}
+          className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 text-white/60 hover:text-emerald-400 transition-colors duration-300 cursor-pointer group"
+        >
+          <span className={`text-sm font-medium ${isArabic ? 'font-cairo' : 'font-inter'}`}>
+            {isArabic ? 'التوزيع' : 'Distribution'}
+          </span>
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            className="w-10 h-10 rounded-full border-2 border-current flex items-center justify-center group-hover:border-emerald-400 group-hover:bg-emerald-500/10 transition-all duration-300"
+          >
+            <ChevronDown className="w-5 h-5" />
+          </motion.div>
+        </motion.button>
 
         {/* Bottom Transition to Next Section */}
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-gray-100 to-transparent" />
