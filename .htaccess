@@ -14,18 +14,20 @@ RewriteBase /
 # RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [L,R=301]
 
 # ============================================
+# Auto-redirect to /en/ if no locale present
+# ============================================
+# Skip if already has /en or /ar
+RewriteCond %{REQUEST_URI} !^/(en|ar)(/|$)
+# Skip static files
+RewriteCond %{REQUEST_URI} !\.(css|js|png|jpg|jpeg|gif|webp|svg|ico|woff|woff2|ttf|xml|txt|json|html)$
+# Skip special files
+RewriteCond %{REQUEST_URI} !^/(robots\.txt|sitemap\.xml|favicon\.ico|\.well-known|google.*\.html|CNAME|\.htaccess)
+# Redirect to /en/
+RewriteRule ^(.*)$ /en/$1 [R=301,L]
+
+# ============================================
 # Case-Insensitive Product URL Redirects
 # ============================================
-
-# Without locale prefix → redirect to /en/ (case-insensitive for convenience)
-RewriteRule ^prices/omepure10ml/?$ /en/prices/omepure10ml/ [R=301,L,NC]
-RewriteRule ^prices/germeten10ml/?$ /en/prices/germeten10ml/ [R=301,L,NC]
-RewriteRule ^prices/alphadrink12/?$ /en/prices/alphadrink12/ [R=301,L,NC]
-RewriteRule ^prices/choclocal15/?$ /en/prices/choclocal15/ [R=301,L,NC]
-RewriteRule ^prices/alphamore15/?$ /en/prices/alphamore15/ [R=301,L,NC]
-RewriteRule ^prices/irovit15/?$ /en/prices/irovit15/ [R=301,L,NC]
-RewriteRule ^prices/alphafresh15/?$ /en/prices/alphafresh15/ [R=301,L,NC]
-RewriteRule ^prices/jaufree10ml/?$ /en/prices/jaufree10ml/ [R=301,L,NC]
 
 # Case variations - redirect to lowercase (NO NC flag to avoid loops!)
 RewriteRule ^(en|ar)/prices/Omepure10ml/?$ /$1/prices/omepure10ml/ [R=301,L]
