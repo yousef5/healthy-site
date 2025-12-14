@@ -78,7 +78,7 @@ const productsSEO: ProductSEO[] = [
     keywords: "الفافريش, AlfaFresh, alfafresh sachets, أكياس الفافريش, مكمل غذائي, HealthyCure, هلثي كيور",
   },
   {
-    path: "Jaufree10ml",
+    path: "jaufree10ml",
     nameAr: "جوفري 10 مل نقط",
     nameEn: "Jaufree 10ml Drops",
     price: 77,
