@@ -72,7 +72,7 @@ const products: ProductType[] = [
     bgGradient: "from-cyan-900 via-teal-900 to-emerald-900",
   },
   {
-    path: "jaufree10ml",
+    path: "Jaufree10ml",
     name: "جوفري 10 مل نقط",
     nameEn: "Jaufree 10ml Drops",
     price: 77,

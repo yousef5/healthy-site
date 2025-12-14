@@ -87,7 +87,7 @@ const products: ProductType[] = [
     categoryEn: "Sachets",
   },
   {
-    path: "jaufree10ml",
+    path: "Jaufree10ml",
     name: "جوفري 10 مل نقط",
     nameEn: "Jaufree 10ml Drops",
     price: 77,
