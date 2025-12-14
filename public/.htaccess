@@ -25,6 +25,7 @@ RewriteRule ^prices/choclocal15/?$ /en/prices/choclocal15/ [R=301,L,NC]
 RewriteRule ^prices/alphamore15/?$ /en/prices/alphamore15/ [R=301,L,NC]
 RewriteRule ^prices/irovit15/?$ /en/prices/irovit15/ [R=301,L,NC]
 RewriteRule ^prices/alphafresh15/?$ /en/prices/alphafresh15/ [R=301,L,NC]
+RewriteRule ^prices/Jaufree10ml/?$ /en/prices/Jaufree10ml/ [R=301,L,NC]
 
 # With uppercase in product name → lowercase (ANY case variation)
 RewriteCond %{REQUEST_URI} ^/(en|ar)/prices/[^/]*[A-Z]

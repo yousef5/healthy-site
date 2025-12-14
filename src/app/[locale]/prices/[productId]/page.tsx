@@ -77,6 +77,15 @@ const productsSEO: ProductSEO[] = [
     descriptionEn: "AlfaFresh 15 Sachets by HealthyCure - Fresh supplement - AlfaFresh price in Egypt",
     keywords: "الفافريش, AlfaFresh, alfafresh sachets, أكياس الفافريش, مكمل غذائي, HealthyCure, هلثي كيور",
   },
+  {
+    path: "Jaufree10ml",
+    nameAr: "جوفري 10 مل نقط",
+    nameEn: "Jaufree 10ml Drops",
+    price: 77,
+    descriptionAr: "جوفري نقط 10 مل من هلثي كيور HealthyCure - مكمل غذائي للأطفال والرضع - سعر جوفري في مصر",
+    descriptionEn: "Jaufree 10ml Drops by HealthyCure - Nutritional supplement for babies and children - Jaufree price in Egypt",
+    keywords: "جوفري, Jaufree, jaufree drops, نقط جوفري, مكمل غذائي للأطفال, HealthyCure, هلثي كيور",
+  },
 ];
 
 const productPaths = productsSEO.map((p) => p.path);

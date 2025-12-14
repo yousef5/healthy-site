@@ -9,8 +9,8 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: isStaticExport,
   },
-  // Only use basePath for GitHub Pages deployment
-  basePath: isGitHubPages ? "/healthy-site" : "",
+  // No basePath needed for custom domain (healthy.com.eg)
+  basePath: "",
   trailingSlash: isStaticExport,
 };
 

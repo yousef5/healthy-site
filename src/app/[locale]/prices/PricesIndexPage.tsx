@@ -86,6 +86,15 @@ const products: ProductType[] = [
     category: "أكياس",
     categoryEn: "Sachets",
   },
+  {
+    path: "Jaufree10ml",
+    name: "جوفري 10 مل نقط",
+    nameEn: "Jaufree 10ml Drops",
+    price: 77,
+    img: "/products/main/joufree.png",
+    category: "نقط",
+    categoryEn: "Drops",
+  },
 ];
 
 const socialLinks = [

@@ -71,6 +71,14 @@ const products: ProductType[] = [
     img: "/products/main/alfafresh.png",
     bgGradient: "from-cyan-900 via-teal-900 to-emerald-900",
   },
+  {
+    path: "Jaufree10ml",
+    name: "جوفري 10 مل نقط",
+    nameEn: "Jaufree 10ml Drops",
+    price: 77,
+    img: "/products/main/joufree.png",
+    bgGradient: "from-indigo-900 via-blue-900 to-sky-900",
+  },
 ];
 
 const socialLinks = [
