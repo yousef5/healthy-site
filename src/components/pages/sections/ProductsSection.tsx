@@ -32,7 +32,7 @@ export const ProductsSection = ({
       imageWidth: 420,
       imageHeight: 420,
       url: "/products/omepure",
-      price: "75",
+      price: "98",
       details: isArabic ? "نقط" : "Drops",
     },
     {
@@ -43,7 +43,7 @@ export const ProductsSection = ({
       imageWidth: 480,
       imageHeight: 480,
       url: "/products/alfamore",
-      price: "89",
+      price: "110",
       details: isArabic ? "15 كيس" : "15 Bags",
     },
     {
@@ -54,7 +54,7 @@ export const ProductsSection = ({
       imageWidth: 440,
       imageHeight: 440,
       url: "/products/alfafresh",
-      price: "40",
+      price: "53",
       details: isArabic ? "15 كيس" : "15 Bags",
     },
     {
@@ -65,7 +65,7 @@ export const ProductsSection = ({
       imageWidth: 300,
       imageHeight: 300,
       url: "/products/germitin",
-      price: "57",
+      price: "98",
       details: isArabic ? "نقط" : "Drops",
     },
   ];

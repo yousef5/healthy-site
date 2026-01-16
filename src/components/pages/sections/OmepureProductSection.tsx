@@ -529,7 +529,7 @@ export const OmepureProductSection = ({
             </p>
             <div className="flex flex-col md:flex-row items-center justify-center gap-6">
               <div className={`px-8 py-4 rounded-2xl ${isDarkMode ? 'bg-white/10' : 'bg-white/20'} backdrop-blur-sm`}>
-                <span className={`text-4xl font-bold ${isDarkMode ? 'text-white' : 'text-white'}`}>75</span>
+                <span className={`text-4xl font-bold ${isDarkMode ? 'text-white' : 'text-white'}`}>98</span>
                 <span className={`text-xl ml-2 ${isDarkMode ? 'text-emerald-200' : 'text-white'} ${isArabic ? 'font-[Tajawal]' : ''}`}>
                   {isArabic ? "ج.م" : "EGP"}
                 </span>
